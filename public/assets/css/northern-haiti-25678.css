@@ -1,0 +1,139 @@
+
+.nt-banner-padding {
+    padding:46px 12px 88px 12px;
+}
+.banner-breadcrumbs li{
+    color: #FFF;
+    padding-right:14px;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.66px;
+    text-transform: uppercase;
+}
+.border-left {
+    border-left: 5px solid #D56C20;
+    padding-left:30px;
+}
+.programs-mt-73 {
+    margin-top:73px;
+}
+.main-banner-content-wrapper p {
+    padding-bottom:0px;
+    line-height:30px;
+}
+.social-icons-holder ul{
+    display:block;
+}
+.social-icons-holder ul li {
+    padding-bottom:28px;
+}
+.social-icons-holder ul li:nth-child(1),.social-icons-holder ul li:nth-child(3){
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.min-h-150{
+    min-height:145px;
+}
+.nt-grid-container {
+    display:grid;
+    grid-template-rows:auto;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap:48px;
+}
+.nt-heading {
+    color: #073C66;
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 55px;
+}
+.nt-heading::after {
+    content:'';
+    display:block;
+    width:55px;
+    height:4px;
+    margin-top:30px;
+    margin-bottom:41px;
+    background: #D56C20;
+}
+.nt-sub-heading {
+    color: #073C66;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom:26px;
+}
+.nt-para {
+    color: #616161;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 100;
+    line-height: 32px;
+    margin-bottom:34px;
+}
+.mt-94 {
+    margin-top:104px;
+    /* border: 2px solid red; */
+}
+.mt-n24 {
+    margin-top:-30px;
+}
+.mt-60 {
+    margin-top:60px;
+}
+.mb-0 {
+    margin-bottom:0px;
+}
+
+@media only screen and (max-width:1350px){
+    .nothern-img img{
+        width:100%;
+    }
+    .northern-haiti-banner .banner-content{
+        margin-top:0px;
+    }
+}
+
+@media only screen and (max-width:767px){
+    .nt-grid-container{
+        grid-template-columns:1fr;
+    }
+    .mt-94{
+        margin-top: 60px;
+    }
+    .nothern-img div:nth-child(1){
+        margin-top: 0px;
+    }
+    .nt-heading{
+        font-size: 38px;
+    }
+    .nt-heading::after{
+        margin-top: 30px;
+    }
+}
+@media only screen and (max-width:767px) {
+    .main-banner-content-wrapper {
+        align-items:center;
+    }
+    section.banner-content.container div.nt-grid-container{
+        display: flex;
+        flex-direction: column-reverse;   
+    }
+    section.banner-content.container div.nt-grid-container .nothern-img {
+        margin-bottom:60px !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+

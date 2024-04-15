@@ -1,0 +1,323 @@
+$colors: (white, blue, grey, orange, dark-blue, dark-orange, dark-blue-600, orange-600);
+$fonts: (6.5, 5.5, 4.5, 3.2, 2.8, 2.4, 2, 1.8, 1.6, 1.4, 1.3, 1.2, 1);
+$gaps: (0.7, 0.9, 13.3, 4.2, 1.3, 6.1, 0.6);
+$line-height:(2, 1, 2.22, 1.77);
+//Padding
+$padding-block-values: ();
+$padding-inline-values: ();
+$padding-block-start-values: (1, 13.3, 4, 10.3, 14.3);
+$padding-block-end-values: (1.2, 8.8, 15, 10.7, 3.6);
+$padding-inline-start-values: ();
+$padding-inline-end-values: ();
+//Margin
+$margin-block-values: ();
+$margin-inline-values: ();
+$margin-block-start-values: (5, 4.2, 3, 10.3, 2, -4, 13.8);
+$margin-block-end-values: ();
+$margin-inline-start-values: (-5.8);
+$margin-inline-end-values: ();
+
+address {
+    font-style: normal;
+}
+
+@each $color in $colors {
+    .clr-#{$color} {
+        color: var(--clr-#{$color});
+    }
+
+    .bg-#{$color} {
+        background-color: var(--clr-#{$color});
+    }
+}
+
+@each $value in $fonts {
+    .fs-#{$value * 10} {
+        font-size: var(--fs-#{$value * 10});
+    }
+}
+
+@each $value in $gaps {
+    .gap-#{$value * 10} {
+        gap: #{$value}rem;
+    }
+}
+
+@each $value in $line-height {
+    .lh-#{$value * 100} {
+        line-height: #{$value};
+    }
+}
+
+//Padding
+//-----------------------------------------------------
+@each $value in $padding-block-values {
+    .pb-#{$value * 10} {
+        padding-block: #{$value}rem;
+    }
+}
+
+@each $value in $padding-inline-values {
+    .pi-#{$value * 10} {
+        padding-inline: #{$value}rem;
+    }
+}
+
+@each $value in $padding-block-start-values {
+    .pbs-#{$value * 10} {
+        padding-block-start: #{$value}rem;
+    }
+}
+
+@each $value in $padding-block-end-values {
+    .pbe-#{$value * 10} {
+        padding-block-end: #{$value}rem;
+    }
+}
+
+@each $value in $padding-inline-start-values {
+    .pis-#{$value * 10} {
+        padding-inline-start: #{$value}rem;
+    }
+}
+
+@each $value in $padding-inline-end-values {
+    .pie-#{$value * 10} {
+        padding-inline-end: #{$value}rem;
+    }
+}
+
+//-----------------------------------------------------
+//Margin
+//-----------------------------------------------------
+@each $value in $margin-block-values {
+    .mb-#{$value * 10} {
+        margin-block: #{$value}rem;
+    }
+}
+
+@each $value in $margin-inline-values {
+    .mi-#{$value * 10} {
+        margin-inline: #{$value}rem;
+    }
+}
+
+@each $value in $margin-block-start-values {
+    .mbs-#{$value * 10} {
+        margin-block-start: #{$value}rem;
+    }
+}
+
+@each $value in $margin-block-end-values {
+    .mbe-#{$value * 10} {
+        margin-block-end: #{$value}rem;
+    }
+}
+
+@each $value in $margin-inline-start-values {
+    .mis-#{$value * 10} {
+        margin-inline-start: #{$value}rem;
+    }
+}
+
+@each $value in $margin-inline-end-values {
+    .mie-#{$value * 10} {
+        margin-inline-end: #{$value}rem;
+    }
+}
+
+//-----------------------------------------------------
+
+.pill {
+    border-radius: 100vw;
+}
+
+.mbs-auto {
+    margin-block-start: auto;
+}
+
+.mb-auto {
+    margin-block: auto;
+}
+
+.ff-int {
+    font-family: var(--ff-int);
+}
+
+.txt-center {
+    text-align: center;
+}
+
+.txt-start {
+    text-align: start;
+}
+
+.fw-300 {
+    font-weight: 300;
+}
+
+.fw-400 {
+    font-weight: 400;
+}
+
+.ff-pop {
+    font-family: var(--ff-pop);
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
+.fw-900 {
+    font-weight: 900;
+}
+
+.mie-auto {
+    margin-inline-end: auto;
+}
+
+.mis-auto {
+    margin-inline-start: auto;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.overflow-h {
+    overflow: hidden;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.d-grid {
+    display: grid;
+}
+
+.d-block {
+    display: block;
+}
+
+.align-e {
+    align-items: end;
+}
+
+.align-s {
+    align-items: start;
+}
+
+.align-b {
+    align-items: baseline;
+}
+
+.align-c {
+    align-items: center;
+}
+
+.mi-auto {
+    margin-inline: auto;
+}
+
+.just-e {
+    justify-content: end;
+}
+
+.just-c {
+    justify-content: center;
+}
+
+.just-s {
+    justify-content: start;
+}
+
+.just-sb {
+    justify-content: space-between;
+}
+
+.just-sa {
+    justify-content: space-around;
+}
+
+.fw-600 {
+    font-weight: 600;
+}
+
+.flex-c {
+    flex-direction: column;
+}
+
+.transition {
+    transition: all 300ms ease-in-out;
+}
+
+.floatable {
+    position: relative;
+}
+
+.opacity-0 {
+    opacity: 0;
+}
+
+.place-center {
+    place-items: center;
+}
+
+.list-none {
+    list-style: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+.floatable {
+    position: relative;
+}
+
+.fit-content {
+    width: fit-content;
+}
+
+.float {
+    position: absolute;
+}
+
+.inset-0 {
+    inset: 0;
+}
+
+.grid-2-cols {
+    grid-template-columns: repeat(var(--_columns, 2), 1fr);
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.pointer-none {
+    pointer-events: none;
+}
+
+.pointer-all {
+    pointer-events: all;
+}

@@ -1,0 +1,198 @@
+.min-h-374 {
+    min-height:374px;
+}
+.contact-banner-padding {
+    padding:46px 12px 88px 12px;
+}
+.banner-breadcrumbs li{
+    color: #073C66;
+    padding-right:14px;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: bolder;
+    line-height: normal;
+    letter-spacing: 0.66px;
+    text-transform: uppercase;
+}
+.border-left {
+    border-left: 4px solid #D56C20;
+    padding-left:30px;
+}
+.media-mt-73 {
+    margin-top:73px;
+}
+.contact-form form {
+    display:flex;
+    flex-direction:column;
+}
+.form-div{
+    width:50%;
+}
+.form-main{
+    justify-content:space-between;
+}
+.form-div form input{
+    font-family: CircularStd;
+    margin-bottom:14px;
+/*    font-weight: 700;*/
+}
+.form-div form input:focus, .form-div form textarea:focus{
+    outline:none;
+}
+.form-div form ::placeholder{
+    color:#9F9F9F;
+}
+#fname, #lname , #subject{
+    padding-top:24px;
+    padding-bottom:24px;
+    padding-left:32px;
+    background:#EFF8FF;
+    font-size:18px;
+    color:#9F9F9F;
+    font-family: CircularStd;
+    border:0px;
+}
+.contact-submit{
+    width:100% !important;
+    padding-top:28px;
+    padding-bottom:28px;
+    background:#00325A;
+    color:#FFF;
+    font-family: CircularStd;
+    margin-top:17px;
+    font-weight:700;
+    letter-spacing: 1.12px;
+    border:0px;
+    margin-bottom:0px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.contact-share-icons svg, .contact-share-icons path {
+    fill:#073C66;
+    
+}
+.contact-share-icons svg{
+    width:28px;
+    height:28px;
+}
+.social-icons-holder ul{
+    display:block;
+}
+.social-icons-holder ul li:nth-child(1),.social-icons-holder ul li:nth-child(3){
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.contact-share-icons .social-icons li:nth-child(2){
+    max-width:28px;
+    min-width:28px;
+}
+.contact-share-icons .social-icons{
+    display:flex;
+    width:100%;
+}
+.contact-share-icons{
+    flex-direction:column;
+    align-items:start;
+    margin-top:50px;
+}
+.contact-share-icons h5{
+    margin-bottom:40px;
+}
+.contact-mb-42{
+    margin-bottom:50px;
+}
+.form-div h2{
+    margin-bottom:37px;
+}
+.form-main .phone-div{
+    margin-top:30px;
+}
+.address-div h5{
+    margin-bottom:10px;
+}
+.banner-desc{
+    padding-bottom:0px;
+    color:#616161;
+    font-size: 18px;
+    line-height: 30px;
+}
+.contact-form .form-main .flex-567 .contact-share-icons ul.social-icons li:nth-child(1) a svg{
+    width:28px !important;
+    height:25.3085px !important;
+}
+.contact-form .form-main .flex-567 .contact-share-icons ul.social-icons li:nth-child(2) a svg{
+    width:28px !important;
+    height:28px !important;
+}
+.contact-form .form-main .flex-567 .contact-share-icons ul.social-icons li:nth-child(3) a svg{
+    width:25.88685px !important;
+    height:28px !important;
+}
+.contact-form .form-main .flex-567 .contact-share-icons ul.social-icons li:nth-child(4) a svg{
+    width:35.71428px !important;
+    height:25px !important;
+}
+.address-div P, .phone-div P{
+    color: #616161;
+}
+.contact-submit {
+    min-height:75px !important;
+}
+@media only screen and (max-width:1300px){
+    .contact-banner .banner-content{
+        margin-top:0px;
+    }
+}
+@media only screen and (max-width:768px){
+    .form-main{
+        flex-direction: column;
+    }
+    .contact-info{
+        width: 100%;
+    }
+    .contact-form .form-main .flex-567 .contact-share-icons ul.social-icons li:nth-child(1) a svg{
+        width: 20px !important;
+        height: 20px !important;
+    }
+    .contact-form .form-main .flex-567 .contact-share-icons ul.social-icons li:nth-child(2) a svg {
+        width: 20px !important;
+        height: 20px !important;
+    }
+    .contact-form .form-main .flex-567 .contact-share-icons ul.social-icons li:nth-child(3) a svg {
+        width: 20px !important;
+        height: 20px !important;
+    }
+    .contact-form .form-main .flex-567 .contact-share-icons ul.social-icons li:nth-child(4) a svg {
+        width: 25px !important;
+        height: 22px !important;
+    }
+    .contact-share-icons .social-icons{
+        width: 250px;
+    }
+    .form-main .social-icons-holder{
+        padding-left: 0px !important;
+    }
+    .contact-mb-42{
+        margin-bottom: 30px;
+    }
+    .contact-share-icons{
+        margin-top: 20px;
+    }
+    .form-main .phone-div{
+        margin-top: 20px;
+    }
+    .form-div{
+        width: 100%;
+        margin-top: 50px;
+    }
+    #fname, #lname, #subject{
+        font-size: 16px;
+    }
+}
+@media only screen and (max-width:550px){
+    .contact-banner-padding{
+        padding-left:0px;
+        padding-left:0px;
+    }
+}

@@ -1,0 +1,238 @@
+
+
+.modal-content::scrollbar {
+    border:2px solid red;
+}
+
+/* Styles for the close button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+.support-heading {
+    color: #073C66;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.support-para {
+    color: #616161;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 32px;
+    text-align:start;
+}
+.main-grid p.tabs-para,.main-grid h1.tabs-heading,.main-grid .tabs-sub-heading,.main-grid .years-radio {
+    text-align:start !important;
+}
+.my-20 {
+    margin-top:20px;
+    margin-bottom:20px;
+}
+.mb-110 {
+    margin-bottom:110px;
+}
+.mt-58 {
+    margin-top:58px;
+}
+.mb-18 {
+    margin-bottom:18px;
+}
+.mb-32 {
+    margin-bottom:32px;
+}
+.mb-107 {
+    margin-bottom:107px;
+}
+.mb-58 {
+    margin-bottom:58px;
+}
+.support-tab-content-button 
+{
+    width:100%;
+}
+.support-tab-content-button button.button-main{
+    border-radius: 4px;
+    border: 1px solid #E9E9E9;
+    background: #FFF;
+    box-shadow: 0px 4px 22px 0px rgba(0, 0, 0, 0.03);
+    color: #073C66;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: 0.96px;
+    text-transform: uppercase;
+    font-family:'CircularStd';
+    padding:18px 22px;
+    width:100%;
+    margin-bottom:18px;
+    transition:0.2s;
+}
+.support-tab-content-button button:hover{
+    background : #06467A;
+    color:white;
+}
+.support-main-container {
+    display:grid;
+    grid-template-columns: 40% 60%;
+    grid-gap:26px;
+    width:96%;
+}
+#default-tab::after {
+    content:'';
+}
+#default-tab .main-gallery-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr auto;
+    grid-gap:44px;
+}
+#default-tab .main-gallery-grid .first-child,#default-tab .main-gallery-grid .second-child
+{
+    margin-top:108px;
+}
+.cross-button {
+    padding:10px;
+}
+.tab-content .main-grid {
+    display:grid;
+    grid-template-columns: 1fr auto;
+}
+.cross-button {
+    cursor:pointer;
+    position:relative;
+    right:24px;
+    top:-10px ;
+}
+.years-radio {
+    padding-top:22px;
+    padding-bottom:22px;
+}
+.tab-content .tab-first-child{
+    padding-left:58px;
+    padding-right:26px;
+    padding-top:56px;
+    padding-bottom:50px;
+    border-radius: 5px;
+    border: 1px solid #E5E5E5;
+    background: #FFF;
+    box-shadow: 0px 4px 22px 0px rgba(0, 0, 0, 0.03);
+    margin-right:34px;
+}
+.tab-content .tabs-para{
+    color:#616161;
+    line-height: 32px; 
+    padding-right:50px;
+    margin-top:25px;
+}
+.sponsorships-form{
+    color: #616161;
+}
+.years-radio-heading{
+    margin-bottom:30px;
+}
+
+.years-radio label{
+    font-size:18px;
+    color:#073C66;
+    font-weight:700;
+     margin-bottom:16px;
+}
+input[type="radio"] + label {
+  display: inline-block;
+  padding: 5px;
+  cursor: pointer;
+}
+
+input[type="radio"] + label:before {
+  content: "";
+  display: inline-block;
+  width: 9px;
+  height:9px;
+  border: 3px solid #E5E5E5;
+  border-radius: 50%; 
+  margin-right: 10px;
+}
+input[type="radio"]:checked + label:before {
+  background-color: #E76C13;
+}
+input[type="radio"] {
+  display: none;
+}
+.year-btn{
+    color: #fff !important;
+    font-weight: 700;
+    border-radius: 5px;
+    padding: 18.5px 53px;
+    background-color: var(--clr-orange) !important;
+    margin-left:auto;
+    font-family: CircularStd;
+    font-size:16px;
+    border: 1px solid #E5E5E5;
+    margin-bottom:60px;
+}
+.tabs-sub-heading{
+    color:#073C66;
+}
+
+p.includes {
+    margin-top:12px;
+    margin-bottom:2px;
+}
+.bullets {
+    margin-left:30px;
+}
+.bullets li::marker{
+    color: #073C66;
+    font-size: 1.5em;
+}
+.includes {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 32px;
+}
+.bullets li {
+    color: #616161;
+    font-size: 16px;
+    line-height: 32px;
+}
+.mt-16 {
+    margin-top:16px !important;
+}
+.text-616161 {
+    color : #616161;
+}
+.ml-40 {
+    margin-left:40px;
+}
+.list-unstyled {
+    list-style-type:none;
+}
+.fw-700 {
+    font-weight:700;
+}
+.blue-heading {
+    font-size:18px !important;
+}
+.my-22-8 {
+    margin-top:22px;
+    margin-bottom:8px;
+}
+.address {
+    text-align:start;
+    line-height:32px;
+    margin-top:10px;
+}
+ul.bottom-ul li {
+    text-align:start;
+    line-height:32px;
+}
+@media only screen and (max-width:576px) {
+    .ml-40 {
+        margin-left:14px !important;
+    }
+}

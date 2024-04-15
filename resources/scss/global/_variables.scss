@@ -1,0 +1,139 @@
+@font-face {
+    font-family: 'CircularStd';
+    src: url("/fonts/CircularStd-Book.woff2");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'CircularStd';
+    src: url("/fonts/CircularStd-Bold.woff2");
+    font-weight: 700;
+}
+
+:root {
+    //font
+    --ff-cle: 'CircularStd';
+    --ff-int: 'Inter', sans-serif;
+    //colors
+    --clr-white: #fff;
+    --clr-blue: #06467A;
+    --clr-grey: #6C6C6C;
+    --clr-orange: #D56C20;
+    --clr-dark-blue: #073C66;
+    --clr-dark-blue-600: #00325A;
+    --clr-orange-600: #D6732B;
+    --clr-dark-orange: #E76C13;
+
+    //Font sizes
+    --fs-65: 6.5rem;
+    --fs-55: 5.5rem;
+    --fs-45: 4.5rem;
+    --fs-32: 3.2rem;
+    --fs-28: 2.8rem;
+    --fs-24: 2.4rem;
+    --fs-20: 2rem;
+    --fs-18: 1.8rem;
+    --fs-16: 1.6rem;
+    --fs-14: 1.4rem;
+    --fs-13: 1.3rem;
+    --fs-12: 1.2rem;
+    --fs-10: 1rem;
+}
+
+
+@media (max-width: 1366px) {
+    :root {
+        --fs-65: 6rem;
+        --fs-55: 4.8rem;
+        --fs-45: 4rem;
+        --fs-28: 2.6rem;
+        --fs-24: 2.2rem;
+        --fs-20: 1.8rem;
+        --fs-18: 1.75rem;
+    }
+}
+
+@media (max-width: 1280px) {
+    :root {
+        --fs-65: 5.5rem;
+        --fs-55: 4.4rem;
+        --fs-45: 3.8rem;
+        --fs-32: 3rem;
+        --fs-28: 2.4rem;
+        --fs-24: 2rem;
+        --fs-20: 1.8rem;
+        --fs-18: 1.7rem;
+    }
+}
+
+@media (max-width: 1100px) {
+    :root {
+        --fs-65: 5.5rem;
+        --fs-55: 4rem;
+        --fs-45: 3.2rem;
+        --fs-32: 3rem;
+        --fs-28: 2.2rem;
+        --fs-24: 2.2rem;
+        --fs-20: 1.7rem;
+        --fs-18: 1.6rem;
+        --fs-14: 1.3rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    :root {
+        --fs-65: 5.5rem;
+        --fs-55: 4rem;
+        --fs-45: 3.2rem;
+        --fs-32: 3rem;
+        --fs-28: 2rem;
+        --fs-24: 2rem;
+        --fs-20: 1.7rem;
+        --fs-18: 1.6rem;
+        --fs-14: 1.3rem;
+    }
+}
+
+@media (max-width: 900px) {
+    :root {
+        --fs-65: 5rem;
+        --fs-55: 4rem;
+        --fs-45: 3.2rem;
+        --fs-32: 3rem;
+        --fs-28: 2rem;
+        --fs-24: 2rem;
+        --fs-20: 1.7rem;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --fs-65: 4.5rem;
+        --fs-55: 4rem;
+        --fs-45: 3.2rem;
+        --fs-32: 3rem;
+        --fs-28: 2rem;
+        --fs-24: 2rem;
+        --fs-20: 1.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --fs-65: 3.8rem;
+        --fs-55: 3.8rem;
+        --fs-45: 3.2rem;
+        --fs-32: 3rem;
+        --fs-28: 2rem;
+        --fs-24: 1.8rem;
+        --fs-16: 1.5rem;
+    }
+}
+
+@media (max-width:600px) {
+    :root {
+        --fs-65: 3.6rem;
+        --fs-45: 3.2rem;
+        --fs-16: 1.4rem;
+    }
+}

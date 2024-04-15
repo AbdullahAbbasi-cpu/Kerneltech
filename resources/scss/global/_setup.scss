@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    font-size: inherit;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 62.5%;
+    font-family: var(--ff-cle);
+}
+
+body {
+    font-size: 1.6rem;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button,
+[role="button"],
+.button,
+input[type="submit"],
+input[type="button"] {
+    cursor: pointer;
+    display: block;
+    width: fit-content;
+}

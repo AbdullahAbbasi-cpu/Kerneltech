@@ -1,0 +1,213 @@
+/*================================================================================
+	Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
+	Version: 2.0
+	Author: PIXINVENT
+	Author URL: http://www.themeforest.net/user/pixinvent
+================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+label.error{
+	color: red !important;
+}
+/*.cross-grid{
+	display: grid !important;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+}*/
+.cross-card button{
+	border: 0px solid blue;
+	margin-left: -25px;
+	display: flex;
+
+}
+.cross-card button img{
+	background: black;
+	padding: 3px;
+	border-radius: 3px;
+}
+
+#clearImageButton_1,#clearImageButton_2,#clearImageButton_3,#clearImageButton_4,#clearImageButton_5,#clearImageButton_6,#clearImageButton,.clearImageButton{
+	margin-top: 3px;
+	margin-left: 5px;
+}
+#uploadButton{
+	height: fit-content !important;
+}
+.datepicker-img{
+	margin-left: -20px;
+	position: relative;
+	right: 10px;
+	pointer-events: none;
+}
+.ck-content {
+	pointer-events: all !important;
+}
+.ck-editor__main .ck-editor__editable{
+	min-height: 200px;
+}
+.ck-editor{
+	z-index: 0;
+}
+.news-edit-btn{
+	margin-right: 5px;
+}
+.show-btn {
+	margin-right: 5px;
+}
+.homepage-toggle .custom-switch{
+	height: fit-content;
+	margin-top: 8px;
+}
+
+
+/* custom css start here */
+.login-button {
+	box-shadow:none !important;
+	background : #0094f4 !important;
+	transition: 0.3s !important;
+	border: 1px solid transparent !important;
+}
+.login-button:hover {
+	background :white !important;
+	color: #0094f4 !important;
+	border: 1px solid #0094f4 !important;
+}
+.vertical-layout .main-menu,#main-menu-navigation {
+	background : #0094f4 !important;
+}
+/* #main-menu-navigation li:nth-child(1).active a{
+	background:transparent !important;
+} */
+.main-menu, .main-menu-content .navigation-main {
+	background-color: #00325A !important;
+}
+.main-menu.menu-light .navigation > li ul .active,.main-menu.menu-light .navigation > li ul .active a {
+	border-radius:5px !important;
+}
+.main-menu.menu-light .navigation li a{
+	color: #fff;
+	font-size:15px !important;
+}
+.waves-light{
+	background: #0094f4 !important;
+}
+#shorts_image_container{
+	margin-top: 60px !important;
+}
+.main-menu .navbar-header .navbar-brand .brand-text {
+	color:#ffffff !important;
+}
+body.vertical-layout.vertical-menu-modern .toggle-icon {
+	color:#ffffff !important;
+}
+.long-videos{
+	margin-top: 60px;
+}
+.long-videos h1, #shorts_image_container h1, #photo_image_container h1{
+	margin-bottom: 30px;
+}
+.toast-success{
+    background-color: #e76c13 !important;
+}
+
+.section-headers span{
+	font-weight: 600 !important;
+	font-family: 'syne' !important;
+}
+#number-tabs .btn-primary,.export-csv {
+	transition: 0.3s !important;
+	/* border:1px solid transparent; */
+}
+#number-tabs .btn-primary:hover a,.export-csv:hover a {
+	color:#0094f4 !important;
+}
+#number-tabs .btn-primary:hover,.export-csv:hover {
+	box-shadow:none !important;
+	color:#0094f4 !important;
+	border:1px solid #0094f4;
+	background:white !important;
+}
+.main-menu.menu-light .navigation > li .active > a
+{
+	color:#0094f4 !important;
+}
+
+.main-menu.menu-light .navigation > li .active > a ,.main-menu.menu-light .navigation > li ul .active
+{
+	background: #ffffff !important;
+}
+.main-menu.menu-light .navigation > li ul .active {
+	box-shadow: none !important;
+}
+.main-menu.menu-light .navigation li.is-shown a {
+	transition: 0.5s !important;
+}
+.main-menu.menu-light .navigation li.is-shown a:hover {
+	color:0094f4 !important;
+	opacity:0.8 !important;
+}
+#main-menu-navigation .menu-content {
+	background:transparent !important;
+}
+#main-menu-navigation .menu-content li.is-shown:hover #main-menu-navigation .menu-content li.is-shown a {
+	color:#ffffff !important;
+}
+.main-menu.menu-light .navigation > li.active > a,.main-menu.menu-light .navigation > li.open > a {
+	background:#ffffff !important;
+	box-shadow:none !important;
+	color:#0094f4 !important;
+}
+.admin-view-btn,.news-edit-btn,.our-people-edit-btn{
+	background : #00325A !important;
+}
+body.vertical-layout.vertical-menu-modern.menu-expanded .main-menu .navigation > li.open > a > i:before {
+	color:#0094f4 !important;
+}
+/* .admin-trash-btn {
+	background:red !important;
+} */
+.description-wrapper p {
+	margin-bottom:0px !important;
+}
+fieldset input[type="file"] {
+	padding:6.2px !important;
+}
+.admin-edit-btn {
+	margin-right:5px;
+	margin-left:5px;
+}
+.opacity-0 {
+	opacity: 0 !important;
+}
+.pointer-events-none{
+	pointer-events: none !important;
+}
+.cross-container .preview.p-1 {
+	padding:10px !important;
+	border-radius:8px;
+	border-radius:8px;
+}
+.remove-step {
+	background: #ed6666 !important;
+}
+.btn-primary.remove-step {
+	border:1px solid #ed6666 !important;
+}
+#number-tabs  .btn-primary.remove-step:hover {
+	border:1px solid #ed6666 !important;
+	color: #ed6666 !important;
+}
+#WorkingProcessCreateForm .error-message {
+	top:1px !important;
+	font-size:13px !important;
+}
+/* .steps-wrapper .step:hover {
+	cursor:grab;
+} */
+.rchars {
+	font-size:12px !important;
+}
+/* custom css end here */

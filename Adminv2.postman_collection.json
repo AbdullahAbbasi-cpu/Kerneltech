@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "590e05c4-967a-4387-b8bd-b016e9d3eb5a",
+		"name": "Adminv2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Management",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"alinawaz204@gmail.com\",\r\n    \"password\": \"12345678\",\r\n    \"name\": \"Umer Memon\"\r\n}"
+						},
+						"url": "{{host_url}}/api/signup"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"alinawaz204@gmail.com\",\r\n    \"password\": 1234567890\r\n}"
+						},
+						"url": "{{host_url}}/api/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"new_password\": 123456789,\r\n    \"confirm_password\": 123456789\r\n}"
+						},
+						"url": "{{host_url}}/api/change-password"
+					},
+					"response": []
+				},
+				{
+					"name": "Forget Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"alinawaz204@gmail.com\"\r\n}"
+						},
+						"url": "{{host_url}}/api/forget-password"
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"alinawaz204@gmail.com\",\r\n    \"temporary_password\": 83668171,\r\n    \"new_password\": 1234567890,\r\n    \"confirm_password\": 1234567890\r\n}"
+						},
+						"url": "{{host_url}}/api/reset-password"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"alinawaz204@gmail.com\",\r\n    \"name\":\"Umer Dev\"\r\n}"
+						},
+						"url": "{{host_url}}/api/update-profile"
+					},
+					"response": []
+				},
+				{
+					"name": "View Profile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "{{host_url}}/api/view-profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Background Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "{{host_url}}/api/background-login"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "General APIs",
+			"item": []
+		}
+	]
+}
