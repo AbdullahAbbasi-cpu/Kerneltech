@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('sticky_logo')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
+            $table->string('copyright')->nullable();
+            $table->string('footer_script')->nullable();
             $table->string('linkedin')->nullable();
             $table->string('google')->nullable();
             $table->timestamps();

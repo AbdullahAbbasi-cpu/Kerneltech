@@ -133,6 +133,17 @@
                             </fieldset>
                             <fieldset>
                                 <div class="row">
+                                    <!-- <div class="col-sm-6 mt-2">
+                                        <div class="form-group">
+                                            <div class="custom-control custom-switch custom-switch-success mr-2">
+                                                <span class="mr-2">Show Privacy Policy</span>
+                                                <input type="checkbox" class="custom-control-input home_page_checkbox" id="privacyPolicy" name="show_privacy_policy" value="1" {{ $records->show_privacy_policy == 1 ? 'checked' : '' }}>
+                                                <label class="custom-control-label" for="privacyPolicy"></label>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    
+
                                     <div class="col-sm-6 mt-2">
                                         <div class="form-group">
                                             <div class="custom-control custom-switch custom-switch-success mr-2">
@@ -141,7 +152,13 @@
                                                 <label class="custom-control-label" for="privacyPolicy"></label>
                                             </div>
                                         </div>
+                                        <div id="privacyPolicyTextArea" class=" mt-2" style="display: none;">
+                                            <textarea class="form-control editor" id="privacypolicyeditor" name="privacy_policy_content" rows="5">{{ $records->privacy_policy_content }}</textarea>
+                                        </div>
                                     </div>
+
+
+
                                     <div class="col-sm-6 mt-2">
                                         <div class="form-group">
                                             <div class="custom-control custom-switch custom-switch-success mr-2">
@@ -149,6 +166,9 @@
                                                 <input type="checkbox" class="custom-control-input home_page_checkbox" id="termsAndCondition" name="show_terms_and_condition" value="1" {{ $records->show_terms_and_condition == 1 ? 'checked' : '' }}>
                                                 <label class="custom-control-label" for="termsAndCondition"></label>
                                             </div>
+                                        </div>
+                                        <div id="termsConditionsTextArea" class=" mt-2" style="display: none;">
+                                            <textarea class="form-control editor" id="termsAndConditionEditor" name="terms_and_condition_content" rows="5">{{ $records->terms_and_condition_content }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -195,6 +215,46 @@
             }
         });
 
+        // $('#privacyPolicy').change(function() {
+        //     if ($(this).is(':checked')) {
+        //         $('#privacyPolicyTextArea').show();
+        //     } else {
+        //         $('#privacyPolicyTextArea').hide();
+        //     }
+        // });
+
+        // / Check initial state
+        if ($('#privacyPolicy').is(':checked')) {
+            $('#privacyPolicyTextArea').show();
+        } else {
+            $('#privacyPolicyTextArea').hide();
+        }
+
+        // Attach change event handler
+        $('#privacyPolicy').change(function() {
+            if ($(this).is(':checked')) {
+                $('#privacyPolicyTextArea').show();
+            } else {
+                $('#privacyPolicyTextArea').hide();
+            }
+        });
+        // Check initial state for terms and conditions
+        if ($('#termsAndCondition').is(':checked')) {
+            $('#termsConditionsTextArea').show();
+        } else {
+            $('#termsConditionsTextArea').hide();
+        }
+
+        // Attach change event handler for terms and conditions
+        $('#termsAndCondition').change(function() {
+            if ($(this).is(':checked')) {
+                $('#termsConditionsTextArea').show();
+            } else {
+                $('#termsConditionsTextArea').hide();
+            }
+        });
+
     });
+    
     </script>
 @endsection

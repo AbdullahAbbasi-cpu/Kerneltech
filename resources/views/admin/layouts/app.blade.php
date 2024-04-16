@@ -187,19 +187,33 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/41.2.1/classic/ckeditor.js"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
     <script>
-        ClassicEditor
-            .create( document.querySelector( '#editor' ) )
-            .then( editor => {
-                console.log( editor );
-                $(document).on('mousedown', function(event) {
-                    if ($(event.target).closest('.ck-editor').length > 0) {
-                        editor.editing.view.focus();
-                    }
-                });
-            })
-            .catch( error => {
-                console.error( error );
-            });
+        // ClassicEditor
+        //     .create( document.querySelector( '#editor' ) )
+        //     .then( editor => {
+        //         console.log( editor );
+        //         $(document).on('mousedown', function(event) {
+        //             if ($(event.target).closest('.ck-editor').length > 0) {
+        //                 editor.editing.view.focus();
+        //             }
+        //         });
+        //     })
+        //     .catch( error => {
+        //         console.error( error );
+        //     });
+        // Target all elements with the class 'editor'
+        var editors = document.querySelectorAll('.editor');
+            // Loop through each editor element
+            editors.forEach(function(editorEl) {
+                // Create ClassicEditor instance for each editor element
+                ClassicEditor
+                    .create(editorEl)
+                    .then(editor => {
+                        console.log(editor);
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+        });
     </script>
 
     <!-- ck editor end -->
