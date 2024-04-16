@@ -70,6 +70,18 @@
                 </ul>
             </li>
 
+            <!-- Achievement -->
+
+            <li class="nav-item {{ request()->segment(2) == 'achievements' ? 'active' : '' }}"><a href="#"><i class="feather icon-sliders"></i><span class="menu-title">Achievements</span>
+                </a>
+                <ul class="menu-content">
+                    <li class="{{ (request()->segment(2) == 'achievements' && request()->segment(3) == 'create') ? 'active' : '' }}"><a href="{{ route('admin.achievements.create') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Add Achievement</span></a>
+                    </li>
+                    <li class="{{ (request()->segment(2) == 'achievements' && request()->segment(3) != 'create') ? 'active' : '' }}"><a href="{{ route('admin.achievements.index') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Manage Achievement</span></a>
+                    </li>
+                </ul>
+            </li>
+
             <!-- Media Files -->
 
             {{-- <li class="nav-item {{ request()->segment(2) == 'media-files' ? 'active' : '' }}"><a href="#"><i class="feather icon-film"></i><span class="menu-title" data-i18n="Media player">Media Files</span>

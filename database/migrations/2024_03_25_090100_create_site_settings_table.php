@@ -25,8 +25,6 @@ return new class extends Migration
             $table->string('twitter')->nullable();
             $table->string('linkedin')->nullable();
             $table->string('google')->nullable();
-            $table->text('footer_script')->nullable();
-            $table->text('copyright')->nullable();
             $table->timestamps();
         });
     }

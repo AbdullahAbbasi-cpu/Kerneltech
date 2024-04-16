@@ -32,7 +32,6 @@ class UpdateSiteSettingRequest extends FormRequest
             'twitter'         => 'max:190',
             'pinterest'       => 'max:190',
             'pinterest'       => 'max:190',
-            'footer_scripts'  => 'max:65535'
         ];
     }
 }

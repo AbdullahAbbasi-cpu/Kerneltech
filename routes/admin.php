@@ -78,6 +78,7 @@ Route::name('admin.')->group(
         Route::resource('industries', 'industriesController');
         Route::post('industries/front', 'industriesController@isActive')->name('industries.front');
         Route::resource('news', 'NewsController');
+        Route::resource('achievements', 'achievementsController');
         Route::resource('our-people', 'OurPeopleController');
         Route::post('media/reorder', 'MediaController@reorder')->name('media.reorder');
         Route::post('news/front', 'NewsController@frontPage')->name('news.front');

@@ -32,8 +32,6 @@ class SiteSettingsTableSeeder extends Seeder
             'twitter'         => 'https://twitter.com/kerneltech',
             'linkedin'          => 'https://linkedin.com/kerneltech',
             'google'         => 'https://google.com/kerneltech',
-            'footer_script'  => '',
-            'copyright' => 'Copyright © ' . date('Y') . ' Kernel Tech All Rights Reserved.',
             'created_at'      => date('Y-m-d H:i:s'),
             'updated_at'      => date('Y-m-d H:i:s')
         ]);
