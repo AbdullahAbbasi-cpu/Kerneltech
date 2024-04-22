@@ -6,7 +6,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Inquiries <i class="feather icon-film"></i></h4>
+                    <h4 class="card-title">Inquiries <i class="feather icon-search"></i></h4>
                         <a href="{{route('admin.export')}}">
                         <button type="button" class="export-csv btn btn-primary mr-1 mb-1 waves-effect waves-light">Export CSV</button></a>
                 </div>

@@ -10,7 +10,7 @@
                 </div>
                 <div class="card-content">
                     <div class="card-body">
-                        <form method="POST" id="newsUpdateForm" action="{{ route('admin.industries.update', $data->id) }}" class="number-tab-steps wizard-circle" enctype="multipart/form-data">
+                        <form method="POST" id="industriesUpdateForm" action="{{ route('admin.industries.update', $data->id) }}" class="number-tab-steps wizard-circle" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <fieldset>
@@ -83,6 +83,33 @@
                 $('#preview').attr('src', e.target.result);
             }
             reader.readAsDataURL(file);
+        });
+
+        $.validator.addMethod("imageFileType", function(value, element) {
+            // Get the file extension
+            var extension = value.split('.').pop().toLowerCase();
+            // Check if the extension is one of the allowed image types
+            return ['jpg', 'jpeg', 'png', 'gif'].indexOf(extension) !== -1;
+        }, "Please select a valid image file (jpg, jpeg, png, gif)");
+
+        $('#industriesUpdateForm').validate({
+            rules: {
+                title: {
+                    required: true,
+                },
+                image: {
+                    required: true,
+                    imageFileType: true
+                },
+            },
+            messages: {
+                title: {
+                    required: "Please enter your title",
+                },
+                image: {
+                    required: "Please select image",
+                },
+            },
         });
     });
     </script>

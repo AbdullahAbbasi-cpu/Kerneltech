@@ -25,7 +25,7 @@ class UpdateBannerRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'description' => 'required',
+            // 'description' => 'required',
             'is_active' => 'required',
             'page_to_show_slider_on' => 'required',
         ];

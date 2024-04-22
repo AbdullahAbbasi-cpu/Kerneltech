@@ -25,7 +25,7 @@ class StoreBannerRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'description' => 'required',
+            // 'description' => 'required',
             'image' => 'required|file|mimes:jpeg,jpg,png,webp',
             'is_active' => 'required',
             'page_to_show_slider_on' => 'required',
