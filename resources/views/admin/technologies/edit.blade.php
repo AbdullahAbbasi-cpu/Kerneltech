@@ -48,7 +48,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="page_title">Title</label>
-                                            <input required type="text" name="title" value="{{$data->title}}" placeholder="Add Name" class="form-control">
+                                            <input required type="text" name="title" value="{{ old('title', $data->title) }}" placeholder="Add Name" class="form-control">
                                         </div>
                                     </div>
                                 </div>

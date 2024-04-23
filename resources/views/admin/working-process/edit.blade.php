@@ -6,7 +6,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Edit Testimonial <i class="feather icon-message-circle"></i></h4>
+                    <h4 class="card-title">Edit Working Process <i class="feather icon-message-circle"></i></h4>
                 </div>
                 <div class="card-content">
                     <div class="card-body">
@@ -21,7 +21,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="page_title">Name</label>
-                                            <input required type="text" name="heading" value="{{$data->heading}}" placeholder="Add Name" class="form-control">
+                                            <input required type="text" name="heading" value="{{ old('heading', $data->heading) }}" placeholder="Add Name" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -61,14 +61,14 @@
                                     <div class="col-sm-6">
                                         <div class="form-group mb-2">
                                             <label for="description">Description</label>
-                                            <textarea class="form-control" name="description" placeholder="Add Description" rows="4">{{$data->description}}</textarea>
+                                            <textarea value="{{ old('description', $data->description) }}" class="form-control" name="description" placeholder="Add Description" rows="4">{{$data->description}}</textarea>
                                         </div>
                                     </div>
                                 </div>
                             </fieldset>
 
                             <!-- empty step to clone from here -->
-                            <div class="step  cloning-step d-none">
+                            <div class="step cloning-step d-none">
                                 <fieldset>
                                     <div class="row flex-column">
                                         <div class="col-sm-6">
@@ -142,7 +142,7 @@
                                                     <div class="col-sm-6">
                                                         <div class="form-group mb-1">
                                                             <label>Title</label>
-                                                            <input type="text" name="title_{{ $i }}" placeholder="Add Title" class="title-holder form-control" value="{{ $data->$titleName ?? '' }}">
+                                                            <input type="text" value="{{ old('title_' . $i, $data->{'title_' . $i}) }}" name="title_{{ $i }}" placeholder="Add Title" class="title-holder form-control">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -152,7 +152,7 @@
                                                     <div class="col-sm-6">
                                                         <div class="form-group mb-2">
                                                             <label for="description">Description</label>
-                                                            <textarea class="description-holder form-control" name="description_{{ $i }}" placeholder="Add Description" rows="4">{{ $data->$descriptionName ?? '' }}</textarea>
+                                                            <textarea class="description-holder form-control" name="description_{{ $i }}" placeholder="Add Description" rows="4">{{ old('description_' . $i, $data->{'description_' . $i} ?? '') }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>

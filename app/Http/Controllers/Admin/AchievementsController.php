@@ -48,19 +48,19 @@ class AchievementsController extends Controller
 
         // move uploaded file on server.
         $imageFileName = '';
-        if ($request->hasFile('image')) {
-            $file          = $request->file('image');
+        if ($request->hasFile('icon')) {
+            $file          = $request->file('icon');
             $extension     = $file->getClientOriginalExtension();
-            $filename      = 'achievement-image-'.time() . '.' . $extension;
+            $filename      = 'achievement-icon-'.time() . '.' . $extension;
             $file->move(uploadsDir('achievements'), $filename);
-            $data['image'] = $filename;
+            $data['icon'] = $filename;
             $imageFileName = $filename;
         }
         $Banner = achievements::create([
-            'title' => $request->title,
-            'images' => $imageFileName,
+            'icon_text' => $request->icon_text,
+            'icon' => $imageFileName,
             'is_active' => $request->is_active,
-            // 'heading' => $request->heading,
+            'counter' => $request->counter,
 
         ]);
         return redirect()
@@ -92,24 +92,24 @@ class AchievementsController extends Controller
     public function update(UpdateAchievementsRequest $request, string $id)
     {
         $imageFileName = '';
-        if ($request->hasFile('image')) {
-            $file          = $request->file('image');
+        if ($request->hasFile('icon')) {
+            $file          = $request->file('icon');
             $extension     = $file->getClientOriginalExtension();
-            $filename      = 'Achievement-img-'.time() . '.' . $extension;
+            $filename      = 'achievement-icon-'.time() . '.' . $extension;
             $file->move(uploadsDir('achievements'), $filename);
-            $data['image'] = $filename;
+            $data['icon'] = $filename;
             $imageFileName = $filename;
         }
         $Achievement = achievements::where('id', $id)->first();
         if ($Achievement) {
             $updateData = [
-                'title' => $request->title,
-                'heading' => $request->heading,
+                'icon_text' => $request->icon_text,
+                'counter' => $request->counter,
                 'is_active' => $request->is_active,
             ];
 
             if ($imageFileName !== '') {
-                $updateData['images'] = $imageFileName;
+                $updateData['icon'] = $imageFileName;
             }
             $Achievement->update($updateData);
         }
@@ -137,5 +137,18 @@ class AchievementsController extends Controller
             return redirect()
                 ->route('admin.achievements.index')
                 ->with('success', 'achievement was removed successfully!');
+    }
+
+    public function isActive(Request $request)
+    {           
+        if (isset($request)) {
+            $id = $request->id;
+            $isChecked = $request->isChecked;
+            $fieldToUpdate = 'is_active';
+            achievements::where('id', $id)->update([$fieldToUpdate => $isChecked ? 1 : 0]);
+            return response()->json(['message' => ucfirst($request->type) . ' page updated successfully']);
+        } else {
+            return response()->json(['message' => 'Invalid type provided'], 400);
+        }        
     }
 }

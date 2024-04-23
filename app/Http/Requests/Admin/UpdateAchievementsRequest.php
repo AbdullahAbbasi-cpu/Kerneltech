@@ -24,9 +24,9 @@ class UpdateAchievementsRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'heading' => 'required',
+            'counter' => 'required',
             'is_active' => 'required',
+            'icon_text' => 'required',
         ];
     }
 

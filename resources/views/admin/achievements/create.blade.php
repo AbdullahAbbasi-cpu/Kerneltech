@@ -18,8 +18,8 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group mb-1">
-                                            <label>heading</label>
-                                            <input type="text" required name="heading" placeholder="Add heading" class="form-control">
+                                            <label>Counter</label>
+                                            <input type="number" name="counter" value="{{ old('counter') }}" placeholder="Add Numbers" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -37,8 +37,8 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group mb-1">
-                                            <label for="image">Icon</label>
-                                            <input type="file" name="image" class="form-control p-6">
+                                            <label for="image">Upload Icon</label>
+                                            <input type="file" name="icon" class="form-control p-6">
                                         </div>
                                     </div>
                                 </div>
@@ -47,8 +47,8 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group mb-1">
-                                            <label>Title</label>
-                                            <input type="text" required name="title" placeholder="Add title" class="form-control">
+                                            <label>Icon Text</label>
+                                            <input type="text" name="icon_text" value="{{ old('icon_text') }}" placeholder="Add Icon Text" class="form-control">
                                         </div>
                                     </div>
                                 </div>

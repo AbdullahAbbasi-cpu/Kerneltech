@@ -24,16 +24,17 @@ class StoreAchievementsRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'image' => 'required|file|mimes:jpeg,jpg,png,webp',
+            'counter' => 'required',
+            'icon' => 'required|file|mimes:jpeg,jpg,png,webp',
             'is_active' => 'required',
+            'icon_text' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'image.max' => 'Image must be less than 5 MB.',
+            'icon.max' => 'Image must be less than 5 MB.',
         ];
     }
 

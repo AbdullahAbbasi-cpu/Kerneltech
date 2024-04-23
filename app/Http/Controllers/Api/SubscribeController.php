@@ -38,9 +38,10 @@ class SubscribeController extends Controller
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 400);
         }
-        $data = $request->only(['email']);
+        // $data = $request->only(['email']);
+        $data = $validator->validated();
         $Subscribe = Subscribe::create($data);
-        return response()->json(['message' => 'Your Request Registered Successfully'], 201);
+        return response()->json(['message' => 'Your Email Request Registered Successfully'], 201);
     }
 
     /**

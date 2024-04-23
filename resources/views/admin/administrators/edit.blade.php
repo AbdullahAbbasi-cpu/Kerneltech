@@ -40,7 +40,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="email" name="email" value="{{  $data->email }}" class="form-control" readonly>
+                                            <input type="email" name="email" value="{{ old('email', $data->email) }}" class="form-control" readonly>
                                         </div>
                                     </div>
                                 </div>

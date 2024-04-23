@@ -68,101 +68,31 @@ class WorkingProcessController extends Controller
             $noOfSteps = $request->input('no_of_steps');
         }
 
-        // FOR FIRST STEP
-        if ($request->hasFile('image_1')) {
-            $file          = $request->file('image_1');
-            $extension     = $file->getClientOriginalExtension();
-            $filename      = 'working-process-image-1-'.time() . '.' . $extension;
-            $file->move(uploadsDir('working-process'), $filename);
-            $data['image_1'] = $filename;
-            $imageFileName_1 = $filename;
-        } 
-        if($request->has('title_1')) {
-            $title_1 = $request->input('title_1');
-        }
-        if($request->has('description_1')) {
-            $description_1 = $request->input('description_1');
+        
+
+
+        for ($i = 1; $i <= 6; $i++) {
+            $imageKey = 'image_' . $i;
+            $titleKey = 'title_' . $i;
+            $descriptionKey = 'description_' . $i;
+
+            if ($request->hasFile($imageKey)) {
+                $file = $request->file($imageKey);
+                $extension = $file->getClientOriginalExtension();
+                $filename = 'working-process-image-' . $i . '-' . time() . '.' . $extension;
+                $file->move(uploadsDir('working-process'), $filename);
+                $data[$imageKey] = $filename;
+                ${'imageFileName_' . $i} = $filename;
+            }
+
+            if ($request->has($titleKey)) {
+                ${$titleKey} = $request->input($titleKey);
+            }
+            if ($request->has($descriptionKey)) {
+                ${$descriptionKey} = $request->input($descriptionKey);
+            }
         }
 
-        // FOR SECOND STEP
-        if ($request->hasFile('image_2')) {
-            $file          = $request->file('image_2');
-            $extension     = $file->getClientOriginalExtension();
-            $filename      = 'working-process-image-2-'.time() . '.' . $extension;
-            $file->move(uploadsDir('working-process'), $filename);
-            $data['image_2'] = $filename;
-            $imageFileName_2 = $filename;
-        } 
-        if($request->has('title_2')) {
-            $title_2 = $request->input('title_2');  
-        }
-        if($request->has('description_2')) {
-            $description_2 = $request->input('description_2');
-        }
-
-        // FOR THIRD STEP
-        if ($request->hasFile('image_3')) {
-            $file          = $request->file('image_3');
-            $extension     = $file->getClientOriginalExtension();
-            $filename      = 'working-process-image-3-'.time() . '.' . $extension;
-            $file->move(uploadsDir('working-process'), $filename);
-            $data['image_3'] = $filename;
-            $imageFileName_3 = $filename;
-        } 
-        if($request->has('title_3')) {
-            $title_3 = $request->input('title_3');
-        }
-        if($request->has('description_3')) {
-            $description_3 = $request->input('description_3');
-        }
-
-        // FOR FOURTH STEP
-        if ($request->hasFile('image_4')) {
-            $file          = $request->file('image_4');
-            $extension     = $file->getClientOriginalExtension();
-            $filename      = 'working-process-image-4-'.time() . '.' . $extension;
-            $file->move(uploadsDir('working-process'), $filename);
-            $data['image_4'] = $filename;
-            $imageFileName_4 = $filename;
-        } 
-        if($request->has('title_4')) {
-            $title_4 = $request->input('title_4');
-        }
-        if($request->has('description_4')) {
-            $description_4 = $request->input('description_4');
-        }
-
-        // FOR FIFTH STEP
-        if ($request->hasFile('image_5')) {
-            $file          = $request->file('image_5');
-            $extension     = $file->getClientOriginalExtension();
-            $filename      = 'working-process-image-5-'.time() . '.' . $extension;
-            $file->move(uploadsDir('working-process'), $filename);
-            $data['image_5'] = $filename;
-            $imageFileName_5 = $filename;
-        } 
-        if($request->has('title_5')) {
-            $title_5 = $request->input('title_5');  
-        }
-        if($request->has('description_5')) {
-            $description_5 = $request->input('description_5');  
-        }
-
-        // FOR SIXTH STEP
-        if ($request->hasFile('image_6')) {
-            $file          = $request->file('image_6');
-            $extension     = $file->getClientOriginalExtension();
-            $filename      = 'working-process-image-6-'.time() . '.' . $extension;
-            $file->move(uploadsDir('working-process'), $filename);
-            $data['image_6'] = $filename;
-            $imageFileName_6 = $filename;
-        } 
-        if($request->has('title_6')) {
-            $title_6 = $request->input('title_6');  
-        }
-        if($request->has('description_6')) {
-            $description_6 = $request->input('description_6');  
-        }
 
 
         WorkingProcess::create([

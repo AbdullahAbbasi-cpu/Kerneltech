@@ -24,13 +24,25 @@ class StorePageRequest extends FormRequest
     public function rules()
     {
         return [
-            'media_file_id'     => 'required',
-            'page_title'        => 'required|max:190',
-            'slug'              => 'required|unique:pages|max:190',
-            'content'           => 'max:65535',
-            'meta_title'        => 'required|max:190',
-            'meta_keywords'     => 'max:65535',
-            'meta_description'  => 'max:65535'
+            'title'     => 'required',
+            'is_active'        => 'required',
+            'description'              => 'required|max:123',
+            'icon' => 'required|file|mimes:jpeg,jpg,png,webp',
+            'image_1' => 'required|file|mimes:jpeg,jpg,png,webp',
+            'title_1' => 'required',
+            'description_1' => 'required',
+            // 'content'           => 'max:65535',
+            // 'meta_title'        => 'required|max:190',
+            // 'meta_keywords'     => 'max:65535',
+            // 'meta_description'  => 'max:65535'
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'image_1.required'       => 'Please Upload an Image of a card.',
+            'title_1.required'       => 'Please add title to the card.',
+            'description_1.required'       => 'Please add Description to the card.',
         ];
     }
 }

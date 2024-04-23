@@ -48,7 +48,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="page_title">Name</label>
-                                            <input required type="text" name="name" value="{{$data->name}}" placeholder="Add Name" class="form-control">
+                                            <input required type="text" name="name" value="{{ old('name', $data->name) }}" placeholder="Add Name" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -58,7 +58,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="page_title">Designation</label>
-                                            <input required type="text" name="designation" value="{{$data->designation}}" placeholder="Add Designation" class="form-control">
+                                            <input required type="text" name="designation" value="{{ old('designation', $data->designation) }}" placeholder="Add Designation" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -68,7 +68,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group mb-2">
                                             <label for="description">Description</label>
-                                            <textarea class="form-control" name="description" placeholder="Add Description" rows="4">{{$data->description}}</textarea>
+                                            <textarea class="form-control" value="{{ old('description', $data->description) }}" name="description" placeholder="Add Description" rows="4">{{$data->description}}</textarea>
                                         </div>
                                     </div>
                                 </div>

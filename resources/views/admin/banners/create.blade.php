@@ -70,7 +70,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group mb-1">
                                             <label>Title</label>
-                                            <input type="text" required name="title" placeholder="Add Title" class="form-control">
+                                            <input type="text" name="title" value="{{ old('title') }}" placeholder="Add Title" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -80,7 +80,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group mb-2">
                                             <label for="description">Description</label>
-                                            <textarea class="form-control" id="editor" name="description" placeholder="Add Description" rows="4">{{old('description')}}</textarea>
+                                            <textarea class="form-control" id="editor" name="description" value="{{ old('description') }}" placeholder="Add Description" rows="4">{{old('description')}}</textarea>
                                         </div>
                                     </div>
                                 </div>

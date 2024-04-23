@@ -65,6 +65,7 @@ Route::name('admin.')->group(
         Route::resource('free-quote', 'FreeQuoteController');
         Route::resource('subscribe', 'SubscribeController');
         Route::resource('pages', 'PagesController');
+        Route::post('pages/front', 'PagesController@isActive')->name('pages.front');
         Route::resource('media-files', 'MediaFilesController');
         Route::resource('banners', 'BannersController');
         Route::post('banners/front', 'BannersController@isActive')->name('banners.front');
@@ -72,13 +73,14 @@ Route::name('admin.')->group(
         Route::post('testimonials/front', 'TestimonialsController@isActive')->name('testimonials.front');
         Route::resource('media', 'MediaController');
         Route::resource('working-process', 'WorkingProcessController');
-        Route::post('working-process/front', 'WorkingProcessController@isActive')->name('working-process.front');
+        Route::post('working-process/isactive', 'WorkingProcessController@isActive')->name('working-process.isactive');
         Route::resource('technologies', 'technologiesController');
         Route::post('technologies/front', 'technologiesController@isActive')->name('technologies.front');
         Route::resource('industries', 'industriesController');
         Route::post('industries/front', 'industriesController@isActive')->name('industries.front');
         Route::resource('news', 'NewsController');
         Route::resource('achievements', 'achievementsController');
+        Route::post('working-process/front', 'achievementsController@isActive')->name('achievements.front');
         Route::resource('our-people', 'OurPeopleController');
         Route::post('media/reorder', 'MediaController@reorder')->name('media.reorder');
         Route::post('news/front', 'NewsController@frontPage')->name('news.front');

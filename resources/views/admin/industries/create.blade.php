@@ -38,7 +38,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group mb-1">
                                             <label>Title</label>
-                                            <input type="text" required name="title" placeholder="Add title" class="form-control">
+                                            <input type="text" value="{{ old('title') }}" name="title" placeholder="Add title" class="form-control">
                                         </div>
                                     </div>
                                 </div>

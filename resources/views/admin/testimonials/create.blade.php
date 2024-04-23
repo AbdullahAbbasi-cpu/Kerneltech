@@ -38,7 +38,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group mb-1">
                                             <label>Name</label>
-                                            <input type="text" required name="name" placeholder="Add Name" class="form-control">
+                                            <input type="text" value="{{ old('name') }}" name="name" placeholder="Add Name" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -48,7 +48,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group mb-1">
                                             <label>Designation</label>
-                                            <input type="text" required name="designation" placeholder="Add Designation" class="form-control">
+                                            <input type="text" value="{{ old('designation') }}" name="designation" placeholder="Add Designation" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -58,7 +58,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group mb-2">
                                             <label for="description">Description</label>
-                                            <textarea class="form-control" name="description" placeholder="Add Description" rows="4">{{old('description')}}</textarea>
+                                            <textarea class="form-control" value="{{ old('description') }}" name="description" placeholder="Add Description" rows="4">{{old('description')}}</textarea>
                                         </div>
                                     </div>
                                 </div>

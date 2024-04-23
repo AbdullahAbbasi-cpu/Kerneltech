@@ -62,7 +62,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="page_title">Title</label>
-                                            <input required type="text" name="title" value="{{$data->title}}" placeholder="Add Title" class="form-control">
+                                            <input required type="text" name="title" value="{{ old('title', $data->title) }}" placeholder="Add Title" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -72,7 +72,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group mb-2">
                                             <label for="description">Description</label>
-                                            <textarea class="form-control" name="description" id="editor" placeholder="Add Description" rows="4">{{$data->description}}</textarea>
+                                            <textarea class="form-control" name="description" id="editor" placeholder="Add Description" rows="4" value="{{ old('description', $data->description) }}">{{$data->description}}</textarea>
                                         </div>
                                     </div>
                                 </div>

@@ -200,7 +200,7 @@ fieldset input[type="file"] {
 	border:1px solid #ed6666 !important;
 	color: #ed6666 !important;
 }
-#WorkingProcessCreateForm .error-message {
+#WorkingProcessCreateForm .error-message,#pageForm .error-message {
 	top:1px !important;
 	font-size:13px !important;
 }

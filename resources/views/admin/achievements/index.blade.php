@@ -16,8 +16,8 @@
                                 <thead>
                                     <tr>
                                         <th>Icon</th>
-                                        <th>Title</th>
-                                        <th>Heading</th>
+                                        <th>Icon Text</th>
+                                        <th>Counter</th>
                                         <th>Is Active</th>
                                         <th>Actions</th>
                                     </tr>
@@ -30,15 +30,22 @@
                                         @foreach ($data as $key => $Achievement)
                                             <tr>
                                                 <td>
-                                                    @if(!empty($Achievement->images) && $Achievement->images !== '')
-                                                        <img src="{{ asset('uploads/achievements/' . $Achievement->images) }}" alt="Achievement Image" height="40" width="40" class="rounded-circle">
+                                                    @if(!empty($Achievement->icon) && $Achievement->icon !== '')
+                                                        <img src="{{ asset('uploads/achievements/' . $Achievement->icon) }}" alt="Achievement Image" height="40" width="40" class="rounded-circle">
                                                     @else
                                                         <img src="{{ asset('/assets/images/placeholder-image.png') }}" alt="Industry Image" height="40" width="40" class="rounded-circle">
                                                     @endif
                                                 </td>
-                                                <td>{!! $Achievement->title !!}</td>
-                                                <td>{!! $Achievement->heading !!}</td>
-                                                <td style="min-width:7rem !important;">{{ $Achievement->is_active == 1 ? 'Yes' : 'No' }}</td>
+                                                <td>{!! $Achievement->icon_text !!}</td>
+                                                <td>{!! $Achievement->counter !!}</td>
+
+                                                <td style="min-width:7rem !important;">
+                                                    <div class="custom-control custom-switch custom-switch-success mr-2 mb-1">
+                                                        <input type="checkbox" data-id="{{ $Achievement->id }}" class="custom-control-input is_active" id="customSwitch_{{ $counter }}" name="customSwitch_{{ $counter }}" value="" {{ $Achievement->is_active == 1 ? 'checked' : '' }}>
+                                                        <label class="custom-control-label" for="customSwitch_{{ $counter }}"></label>
+                                                    </div>
+                                                </td>
+
                                                 <td style="min-width:16rem !important;">
                                                     <a href="{!! route('admin.achievements.edit', $Achievement->id) !!}" class="btn btn-primary btn-sm waves-effect waves-light news-edit-btn"><i class="feather icon-edit"></i></a>
                                                     <a href="{!! route('admin.achievements.show', $Achievement->id) !!}" class="btn btn-info show-btn btn-sm waves-effect waves-light"><i class="feather icon-search"></i></a>
@@ -77,27 +84,21 @@
 
 <script type="text/javascript">
     $(function() {
-    $('.front_page_checkbox, .home_page_checkbox').on('change', function() {
-        var checkboxValue = $(this).data('id');
-        var isChecked = $(this).is(':checked') ? 1 : 0;
-
-        var checkboxType = $(this).hasClass('front_page_checkbox') ? 'front' : 'home';
-        $.ajax({
-            type: 'POST',
-            url: '{{ route('admin.news.front') }}',
-            data: { id: checkboxValue, isChecked: isChecked, type: checkboxType }, 
-            headers: {
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            },
-            success: function(response) {
-            }
-        });
+        $('.is_active').on('change', function() {
+            var idHolder = $(this).data('id');
+            var isChecked = $(this).is(':checked') ? 1 : 0;
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('admin.achievements.front') }}',
+                data: { id: idHolder, isChecked: isChecked }, 
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                }
+            });
+        }); 
     });
-});
-
 </script>
-
-
-
 
 @endsection

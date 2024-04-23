@@ -77,10 +77,10 @@
     $(function() {
     $('.is_active').on('change', function() {
         var idHolder = $(this).data('id');
-        var isChecked = $(this).is(':checked') ? 1 : 0;
+        var isChecked = $(this).is(':checked') ? 1 : 0;    
         $.ajax({
             type: 'POST',
-            url: '{{ route('admin.working-process.front') }}',
+            url: '{{ route('admin.working-process.isactive') }}',
             data: { id: idHolder, isChecked: isChecked }, 
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'

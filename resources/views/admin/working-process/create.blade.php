@@ -24,7 +24,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group mb-1">
                                             <label>Section Title</label>
-                                            <input type="text" name="heading" placeholder="Add Title" class="form-control title-holder">
+                                            <input type="text" name="heading" value="{{ old('heading') }}" placeholder="Add Title" class="form-control title-holder">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -42,7 +42,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group mb-2">
                                             <label for="description">Section Description</label>
-                                            <textarea class="form-control description-holder" name="description" placeholder="Add Description" rows="4">{{old('description')}}</textarea>
+                                            <textarea class="form-control description-holder" name="description" value="{{ old('description') }}" placeholder="Add Description" rows="4">{{old('description')}}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -104,7 +104,7 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group mb-1">
                                                     <label>Title</label>
-                                                    <input type="text" name="title_1" placeholder="Add Title" class="form-control">
+                                                    <input type="text" name="title_1" value="{{ old('title_1') }}" placeholder="Add Title" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -114,7 +114,7 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group mb-2">
                                                     <label for="description">Description</label>
-                                                    <textarea class="form-control" name="description_1" placeholder="Add Description" rows="4">{{old('description')}}</textarea>
+                                                    <textarea class="form-control" value="{{ old('description_1') }}" name="description_1" placeholder="Add Description" rows="4">{{old('description_1')}}</textarea>
                                                 </div>
                                             </div>
                                         </div>

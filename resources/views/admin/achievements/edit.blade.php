@@ -17,12 +17,12 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group mb-0 d-flex flex-column-reverse align-items-start justify-content-center">
-                                            <input type="hidden" name="image_input" id="image_input" value="{{$data->images}}">
-                                            <input type="file" name="image" id="file"  class="d-none" accept="image/*">
+                                            <input type="hidden" name="image_input" id="image_input" value="{{$data->icon}}">
+                                            <input type="file" name="icon" id="file"  class="d-none" accept="image/*">
                                             <button type="button" onclick="document.getElementById('file').click()" class="btn btn-primary my-1" id="uploadButton">Change Photo</button>
                                             <div class="cross-container d-flex">
-                                                @if(isset($data->images)  && $data->images !== '' )
-                                                    <img id="preview" src="{{ asset(uploadsDir('achievements') . $data->images) }}" alt="Background Picture Preview" class="d-inline-flex rounded-lg" height="80" width="80">
+                                                @if(isset($data->icon)  && $data->icon !== '' )
+                                                    <img id="preview" src="{{ asset(uploadsDir('achievements') . $data->icon) }}" alt="Background Picture Preview" class="d-inline-flex rounded-lg" height="80" width="80">
                                                 @else
                                                     <img id="preview" src="{{ asset('assets/images/placeholder-image.png') }}" alt="Background Picture Preview" class="d-inline-flex rounded-lg" height="80" width="80">
                                                 @endif
@@ -31,6 +31,12 @@
                                                 </button>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 pl-0">
+                                    <div class="form-group">
+                                        <label for="page_title">Title</label>
+                                        <input type="text" name="icon_text" value="{{ old('icon_text', $data->icon_text) }}" placeholder="Add Icon Text" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-sm-6 pl-0">
@@ -47,18 +53,8 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="page_title">Title</label>
-                                            <input required type="text" name="title" value="{{$data->title}}" placeholder="Add Name" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                            </fieldset>
-                            <fieldset>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="page_heading">Heading</label>
-                                            <input required type="text" name="heading" value="{{$data->heading}}" placeholder="Add Name" class="form-control">
+                                            <label for="page_heading">Counter</label>
+                                            <input type="number" name="counter" value="{{ old('counter', $data->counter) }}" placeholder="Add Numbers" class="form-control">
                                         </div>
                                     </div>
                                 </div>
