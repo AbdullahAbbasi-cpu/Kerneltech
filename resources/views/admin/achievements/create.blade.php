@@ -11,7 +11,7 @@
                 </div>
                 <div class="card-content">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('admin.achievements.store') }}" id="bannerCreateForm" class="number-tab-steps wizard-circle" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('admin.achievements.store') }}" id="achievementCreateForm" class="number-tab-steps wizard-circle" enctype="multipart/form-data">
                             @csrf
                             @method('POST')
                             <fieldset>
@@ -93,4 +93,45 @@
         </div>
     </div>
 </section>
+@endsection
+@section('footer-js')
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $.validator.addMethod("imageFileType", function(value, element) {
+            // Get the file extension
+            var extension = value.split('.').pop().toLowerCase();
+            // Check if the extension is one of the allowed image types
+            return ['jpg', 'jpeg', 'png', 'gif'].indexOf(extension) !== -1;
+        }, "Please select a valid image file (jpg, jpeg, png, gif)");
+
+        $('#achievementCreateForm').validate({
+            rules: {
+                heading: {
+                    required: true,
+                },
+                title: {
+                    required: true,
+                },
+                image: {
+                    required: true,
+                    imageFileType: true
+                },
+            },
+            messages: {
+                heading: {
+                    required: "Please enter your heading",
+                },
+                title: {
+                    required: "Please enter your title",
+                },
+                image: {
+                    required: "Please select icon",
+
+                },
+            },
+        });
+    });
+
+</script>
 @endsection

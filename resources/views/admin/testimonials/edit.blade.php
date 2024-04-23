@@ -10,7 +10,7 @@
                 </div>
                 <div class="card-content">
                     <div class="card-body">
-                        <form method="POST" id="newsUpdateForm" action="{{ route('admin.testimonials.update', $data->id) }}" class="number-tab-steps wizard-circle" enctype="multipart/form-data">
+                        <form method="POST" id="testimonialUpdateForm" action="{{ route('admin.testimonials.update', $data->id) }}" class="number-tab-steps wizard-circle" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <fieldset>
@@ -22,7 +22,7 @@
                                             <button type="button" onclick="document.getElementById('file').click()" class="btn btn-primary my-1" id="uploadButton">Change Profile Photo</button>
                                             <div class="cross-container d-flex">
                                                 @if(isset($data->image)  && $data->image !== '' )
-                                                    <img id="preview" src="{{ asset(uploadsDir('testimonials') . $data->image) }}" alt="Background Picture Preview" class="d-inline-flex rounded-lg" height="80" width="80">
+                                                    <img id="preview" src="{{ asset(uploadsDir('testimonials') . $data->image) }}" required alt="Background Picture Preview" class="d-inline-flex rounded-lg" height="80" width="80">
                                                 @else
                                                     <img id="preview" src="{{ asset('assets/images/placeholder-image.png') }}" alt="Background Picture Preview" class="d-inline-flex rounded-lg" height="80" width="80">
                                                 @endif
@@ -103,6 +103,46 @@
                 $('#preview').attr('src', e.target.result);
             }
             reader.readAsDataURL(file);
+        });
+
+        $.validator.addMethod("imageFileType", function(value, element) {
+            // Get the file extension
+            var extension = value.split('.').pop().toLowerCase();
+            // Check if the extension is one of the allowed image types
+            return ['jpg', 'jpeg', 'png', 'gif'].indexOf(extension) !== -1;
+        }, "Please select a valid image file (jpg, jpeg, png, gif)");
+
+        $('#testimonialUpdateForm').validate({
+            rules: {
+                name: {
+                    required: true,
+                },
+                designation: {
+                    required: true,
+                },
+                description: {
+                    required: true,
+                },
+                image: {
+                    required: true,
+                    imageFileType: true
+                },
+            },
+            messages: {
+                name: {
+                    required: "Please enter your name",
+                },
+                designation: {
+                    required: "Please enter your designation",
+                },
+                description: {
+                    required: "Please enter your description",
+                },
+                image: {
+                    required: "Please select profile image",
+
+                },
+            },
         });
     });
     </script>

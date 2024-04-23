@@ -10,7 +10,7 @@
                 </div>
                 <div class="card-content">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('admin.site-settings.update', $records->id) }}" class="number-tab-steps wizard-circle" enctype="multipart/form-data">
+                        <form method="POST" id="site-setting" action="{{ route('admin.site-settings.update', $records->id) }}" class="number-tab-steps wizard-circle" enctype="multipart/form-data">
                             <input type="hidden" id="placeholder_image" name="placeholder_image" value="{{ asset('assets/images/preview-placeholder.png') }}">
                             @csrf
                             @method('PUT')
@@ -60,14 +60,14 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="site_title">Site Title *</label>
-                                            <input type="text" name="site_title" maxlength="190" value="{{ old('site_title', $records->site_title) }}" class="form-control">
+                                            <input type="text" required name="site_title" maxlength="190" value="{{ old('site_title', $records->site_title) }}" class="form-control">
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="contact_email">Contact Email *</label>
-                                            <input type="email" name="contact_email" maxlength="190" value="{{ old('contact_email', $records->contact_email) }}"  class="form-control">
+                                            <input type="email" required name="contact_email" maxlength="190" value="{{ old('contact_email', $records->contact_email) }}"  class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -252,6 +252,95 @@
             } else {
                 $('#termsConditionsTextArea').hide();
             }
+        });
+
+
+        $.validator.addMethod("imageFileType", function(value, element) {
+            // Get the file extension
+            var extension = value.split('.').pop().toLowerCase();
+            // Check if the extension is one of the allowed image types
+            return ['jpg', 'jpeg', 'png', 'gif'].indexOf(extension) !== -1;
+        }, "Please select a valid image file (jpg, jpeg, png, gif)");
+
+        $('#site-setting').validate({
+            rules: {
+                site_title: {
+                    required: true,
+                },
+                contact_email: {
+                    required: true,
+                    email:true,
+                },
+                pakistan_contact_number: {
+                    required: true,
+                },
+                pakistan_address: {
+                    required: true,
+                },
+                pakistan_contact_number: {
+                    required: true,
+                },
+                london_contact_number: {
+                    required: true,
+                },
+                london_address: {
+                    required: true,
+                },
+                facebook: {
+                    required: true,
+                },
+                linkedin: {
+                    required: true,
+                },
+                twitter: {
+                    required: true,
+                },
+                google: {
+                    required: true,
+                },
+                image: {
+                    required: true,
+                    imageFileType: true
+                },
+            },
+            messages: {
+                site_title: {
+                    required: "Please enter your site title",
+                },
+                contact_email: {
+                    required: "Please enter your contact email",
+                    email: "Please enter a valid email address",
+
+                },
+                pakistan_contact_number: {
+                    required: "Please enter your pakistan contact number",
+                },
+                pakistan_address: {
+                    required: "Please enter your pakistan address",
+                },
+                london_contact_number: {
+                    required: "Please enter your london contact number",
+                },
+                london_address: {
+                    required: "Please enter your london address",
+                },
+                facebook: {
+                    required: "Please enter your facebook url",
+                },
+                linkedin: {
+                    required: "Please enter your linkedin url ",
+                },
+                twitter: {
+                    required: "Please enter your twitter url",
+                },
+                google: {
+                    required: "Please enter your google url",
+                },
+                image: {
+                    required: "Please select profile image",
+
+                },
+            },
         });
 
     });
