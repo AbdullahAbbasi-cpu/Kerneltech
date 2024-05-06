@@ -44,23 +44,23 @@ class BannersController extends Controller
     {
         $existingOptions = Banners::pluck('page_to_show_slider_on')->toArray();
         $options = [
-            'home', 
-            'about', 
-            'blog', 
-            'web-application-design', 
-            'mobile-app-design-services', 
-            'android-development', 
-            'hybrid-development', 
-            'ios-development', 
-            'mobile-app-development', 
-            'custom-web-development-services', 
-            'wordpress-development-services', 
-            'laravel-development-services', 
-            'e-commerce-solutions', 
-            'woocommerce-development-services', 
-            'opencart-development-services', 
-            'digital-marketing', 
-            'privacy-policy', 
+            'home',
+            'about',
+            'blog',
+            'web-application-design',
+            'mobile-app-design-services',
+            'android-development',
+            'hybrid-development',
+            'ios-development',
+            'mobile-app-development',
+            'custom-web-development-services',
+            'wordpress-development-services',
+            'laravel-development-services',
+            'e-commerce-solutions',
+            'woocommerce-development-services',
+            'opencart-development-services',
+            'digital-marketing',
+            'privacy-policy',
             'terms-and-condition'
         ];
         $options = array_diff($options, $existingOptions);
@@ -74,11 +74,11 @@ class BannersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StoreBannerRequest $request)
-    {   
+    {
         $data = $request->except([
             '_token',
             '_method',
-            'image'
+
         ]);
 
         // move uploaded file on server.
@@ -86,10 +86,11 @@ class BannersController extends Controller
         if ($request->hasFile('image')) {
             $file          = $request->file('image');
             $extension     = $file->getClientOriginalExtension();
-            $filename      = 'banner-image-'.time() . '.' . $extension;
-            $file->move(uploadsDir('banners'), $filename);
-            $data['image'] = $filename;
-            $imageFileName = $filename;
+            $filename      = 'banners\banner-image-' . time() . '.' . 'webp';
+            // $file->move(uploadsDir('banners'), $filename);
+            $convertedImage =  convertImage($file, $filename);
+            $data['image'] = $convertedImage->basename;
+            $imageFileName = $convertedImage->basename;
         }
         $Banner = Banners::create([
             'title' => $request->title,
@@ -150,7 +151,7 @@ class BannersController extends Controller
 
     public function show($id)
     {
-        $Banner = Banners::where('id',$id)->first();
+        $Banner = Banners::where('id', $id)->first();
         return view('admin.banners.show', compact('Banner'));
     }
 
@@ -166,27 +167,27 @@ class BannersController extends Controller
         $existingOptions = Banners::pluck('page_to_show_slider_on')->toArray();
         $existingOptions = array_diff($existingOptions, [$data->page_to_show_slider_on]);
         $options = [
-            'home', 
-            'about', 
-            'blog', 
-            'web-application-design', 
-            'mobile-app-design-services', 
-            'android-development', 
-            'hybrid-development', 
-            'ios-development', 
-            'mobile-app-development', 
-            'custom-web-development-services', 
-            'wordpress-development-services', 
-            'laravel-development-services', 
-            'e-commerce-solutions', 
-            'woocommerce-development-services', 
-            'opencart-development-services', 
-            'digital-marketing', 
-            'privacy-policy', 
+            'home',
+            'about',
+            'blog',
+            'web-application-design',
+            'mobile-app-design-services',
+            'android-development',
+            'hybrid-development',
+            'ios-development',
+            'mobile-app-development',
+            'custom-web-development-services',
+            'wordpress-development-services',
+            'laravel-development-services',
+            'e-commerce-solutions',
+            'woocommerce-development-services',
+            'opencart-development-services',
+            'digital-marketing',
+            'privacy-policy',
             'terms-and-condition'
         ];
         $options = array_diff($options, $existingOptions);
-        
+
         return view('admin.banners.edit', ['data' => $data, 'options' => $options]);
     }
 
@@ -203,16 +204,17 @@ class BannersController extends Controller
         if ($request->hasFile('image')) {
             $file          = $request->file('image');
             $extension     = $file->getClientOriginalExtension();
-            $filename      = 'banner-image-'.time() . '.' . $extension;
-            $file->move(uploadsDir('banners'), $filename);
-            $data['image'] = $filename;
-            $imageFileName = $filename;
+            $filename      = 'banners\banner-image-' . time() . '.' . 'webp';
+            // $file->move(uploadsDir('banners'), $filename);
+            $convertedImage = convertImage($file, $filename);
+            $data['image'] = $convertedImage->basename;
+            $imageFileName = $convertedImage->basename;
         }
         $Banners = Banners::where('id', $id)->first();
         if ($Banners) {
             $updateData = [
                 'title' => $request->title,
-                'description' => $request->description,       
+                'description' => $request->description,
                 'is_active' => $request->is_active,
                 'page_to_show_slider_on' => $request->page_to_show_slider_on,
             ];
@@ -241,13 +243,13 @@ class BannersController extends Controller
     public function destroy($id)
     {
         $data = Banners::find($id);
-        
-       if ($data) {
+
+        if ($data) {
             if ($data->image != '' && file_exists(uploadsDir('banners') . $data->image)) {
                 unlink(uploadsDir('banners') . $data->image);
             }
             Banners::where('id', $id)->delete();
-        } 
+        }
 
         return redirect()
             ->route('admin.banners.index')
@@ -255,7 +257,7 @@ class BannersController extends Controller
     }
 
     public function isActive(Request $request)
-    {           
+    {
         if (isset($request)) {
             $id = $request->id;
             $isChecked = $request->isChecked;
@@ -264,19 +266,17 @@ class BannersController extends Controller
             return response()->json(['message' => ucfirst($request->type) . ' page updated successfully']);
         } else {
             return response()->json(['message' => 'Invalid type provided'], 400);
-        }        
+        }
     }
 
     public function StoreImage(Request $request)
-    {   
-        
+    {
+
         $imageFileName = '';
         if ($request->hasFile('image')) {
-            $thumbnailSize = 500;            
+            $thumbnailSize = 500;
             $imageFileName = $this->uploadAndCropImage($request->file('image'), $thumbnailSize, 'news-image');
-        } 
+        }
         return response()->json([$imageFileName, $request->image_type]);
     }
-
-
 }

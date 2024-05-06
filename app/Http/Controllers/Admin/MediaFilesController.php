@@ -51,7 +51,7 @@ class MediaFilesController extends Controller
      */
     public function store(StoreMediaFileRequest $request)
     {
-        
+
         $data = $request->except([
             '_token',
             '_method',
@@ -61,9 +61,9 @@ class MediaFilesController extends Controller
         //move | upload file on server
         $file             = $request->file('file');
         $extension        = $file->getClientOriginalExtension(); // getting file extension
-        $filename         = 'media-file-'.time() . '.' . $extension;
-        $file->move(uploadsDir('front'), $filename);
-        $data['filename'] = $filename;
+        $filename         = 'front\media-file-' . time() . '.' . 'webp';
+        $convertedImage = convertImage($file, $filename);
+        $data['filename'] = $convertedImage->basename;
 
         mediaFile::create($data);
 
@@ -81,9 +81,9 @@ class MediaFilesController extends Controller
     public function show($id)
     {
 
-        
+
         $data = mediaFile::find($id);
-        
+
         return view('admin.media-files.show', compact('data'));
     }
 
@@ -115,13 +115,15 @@ class MediaFilesController extends Controller
             //move | upload file on server
             $file      = $request->file('file');
             $extension = $file->getClientOriginalExtension(); // getting image extension
-            $filename  = time() . '.' . $extension;
-            $file->move(uploadsDir('front'), $filename);
+            $filename  = 'front\media-file-' . time() . '.' . 'webp';
+            $convertedImage = convertImage($file, $filename);
 
             //remove/unlink if New uploaded successfully
-            if (file_exists(uploadsDir('front').$filename)
-                && !empty($request->previous_image && file_exists(uploadsDir('front').$request->previous_image))) {
-                unlink(public_path(uploadsDir('front').$request->previous_image));
+            if (
+                file_exists(uploadsDir('front') . $filename)
+                && !empty($request->previous_image && file_exists(uploadsDir('front') . $request->previous_image))
+            ) {
+                unlink(public_path(uploadsDir('front') . $request->previous_image));
             }
         } else {
             $filename = $request->previous_image;
@@ -134,7 +136,7 @@ class MediaFilesController extends Controller
             'file'
         ]);
 
-        $data['filename'] = $filename;
+        $data['filename'] = $convertedImage->basename;
         mediaFile::where('id', $id)->update($data);
 
         return redirect()

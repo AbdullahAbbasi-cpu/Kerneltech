@@ -5,24 +5,35 @@
             <div class="navbar-collapse" id="navbar-mobile">
                 <div class="mr-auto float-left bookmark-wrapper d-flex align-items-center">
                     <ul class="nav navbar-nav">
-                        <li class="nav-item mobile-menu d-xl-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ficon feather icon-menu"></i></a></li>
+                        <li class="nav-item mobile-menu d-xl-none mr-auto"><a
+                                class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i
+                                    class="ficon feather icon-menu"></i></a></li>
                     </ul>
-                    
+
                     <ul class="nav navbar-nav">
-                        <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-expand"><i class="ficon feather icon-maximize"></i></a></li>
+                        <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-expand"><i
+                                    class="ficon feather icon-maximize"></i></a></li>
                     </ul>
                 </div>
                 <ul class="nav navbar-nav float-right">
-                    <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                            <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600 mb-0 text-syne">{!! auth()->user()->first_name . ' ' . auth()->user()->last_name !!}</span></div><span>
-                                @if(auth()->user()->image != '' && file_exists(uploadsDir('admin') . auth()->user()->image ))
-                                <img class="round" src="{!! asset(uploadsDir('admin') . auth()->user()->image) !!}" alt="avatar" height="40" width="40"></span>
-                                @else
-                                <img class="round" src="{!! asset('assets/admin/app-assets/images/portrait/small/avatar-s-11.jpg') !!}" alt="avatar" height="40" width="40"></span>
-                                @endif
+                    <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link"
+                            href="#" data-toggle="dropdown">
+                            <div class="user-nav d-sm-flex d-none"><span
+                                    class="user-name text-bold-600 mb-0 text-syne">{!! auth()->user()->first_name . ' ' . auth()->user()->last_name !!}</span></div>
+                            <span>
+                                @if (auth()->user()->image != '' && file_exists(uploadsDir('admin') . auth()->user()->image))
+                                    <img class="round" src="{!! asset(uploadsDir('admin') . auth()->user()->image) !!}" alt="avatar" height="40"
+                                        width="40">
+                            </span>
+                        @else
+                            <img class="round" src="{!! asset('assets/admin/app-assets/images/portrait/small/avatar-s-11.jpg') !!}" alt="avatar" height="40"
+                                width="40"></span>
+                            @endif
                         </a>
-                        <div class="text-syne dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="{!! route('admin.update-profile') !!}"><i class="feather icon-user"></i> Edit Profile</a>
-                            <div class="dropdown-divider"></div><a class="dropdown-item" href="javascript:;" onclick="logout()"><i class="feather icon-power"></i> Logout</a>
+                        <div class="text-syne dropdown-menu dropdown-menu-right"><a class="dropdown-item"
+                                href="{!! route('admin.update-profile') !!}"><i class="feather icon-user"></i> Edit Profile</a>
+                            <div class="dropdown-divider"></div><a class="dropdown-item" href="javascript:;"
+                                onclick="logout()"><i class="feather icon-power"></i> Logout</a>
                         </div>
                     </li>
                 </ul>
@@ -38,10 +49,13 @@
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item mr-auto"><a class="navbar-brand" href="javascript:void(0);">
-                    {{--<div class="brand-logo"></div>--}}
+                    {{-- <div class="brand-logo"></div> --}}
                     <h2 class="brand-text mb-0 text-syne">{{ config('app.name', 'Laravel') }}</h2>
                 </a></li>
-            <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="feather icon-x d-block d-xl-none font-medium-4 primary toggle-icon"></i><i class="toggle-icon feather icon-disc font-medium-4 d-none d-xl-block collapse-toggle-icon primary" data-ticon="icon-disc"></i></a></li>
+            <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i
+                        class="feather icon-x d-block d-xl-none font-medium-4 primary toggle-icon"></i><i
+                        class="toggle-icon feather icon-disc font-medium-4 d-none d-xl-block collapse-toggle-icon primary"
+                        data-ticon="icon-disc"></i></a></li>
         </ul>
     </div>
     <div class="shadow-bottom d-none"></div>
@@ -57,27 +71,42 @@
             </li>
 
             <li class=" navigation-header section-headers"><span>Modules</span>
-            </li>   
+            </li>
 
             <!-- Administrator  -->
 
-            <li class="nav-item {{ request()->segment(2) == 'administrators' ? 'active' : '' }}"> <a href="#"><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">Administrators</span></a>
+            <li class="nav-item {{ request()->segment(2) == 'administrators' ? 'active' : '' }}"> <a href="#"><i
+                        class="feather icon-user"></i><span class="menu-title"
+                        data-i18n="User">Administrators</span></a>
                 <ul class="menu-content">
-                    <li class="{{ (request()->segment(2) == 'administrators' && request()->segment(3) == 'create') ? 'active' : '' }}"><a href="{{ route('admin.administrators.create') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Add New</span></a>
+                    <li
+                        class="{{ request()->segment(2) == 'administrators' && request()->segment(3) == 'create' ? 'active' : '' }}">
+                        <a href="{{ route('admin.administrators.create') }}"><i class="feather icon-circle"></i><span
+                                class="menu-item" data-i18n="List">Add New</span></a>
                     </li>
-                    <li class="{{ (request()->segment(2) == 'administrators' && request()->segment(3) != 'create') ? 'active' : '' }}"><a href="{{ route('admin.administrators.index') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">List</span></a>
+                    <li
+                        class="{{ request()->segment(2) == 'administrators' && request()->segment(3) != 'create' ? 'active' : '' }}">
+                        <a href="{{ route('admin.administrators.index') }}"><i class="feather icon-circle"></i><span
+                                class="menu-item" data-i18n="View">List</span></a>
                     </li>
                 </ul>
             </li>
 
             <!-- Achievement -->
 
-            <li class="nav-item {{ request()->segment(2) == 'achievements' ? 'active' : '' }}"><a href="#"><i class="feather icon-sliders"></i><span class="menu-title">Achievements</span>
+            <li class="nav-item {{ request()->segment(2) == 'achievements' ? 'active' : '' }}"><a href="#"><i
+                        class="feather icon-sliders"></i><span class="menu-title">Achievements</span>
                 </a>
                 <ul class="menu-content">
-                    <li class="{{ (request()->segment(2) == 'achievements' && request()->segment(3) == 'create') ? 'active' : '' }}"><a href="{{ route('admin.achievements.create') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Add Achievement</span></a>
+                    <li
+                        class="{{ request()->segment(2) == 'achievements' && request()->segment(3) == 'create' ? 'active' : '' }}">
+                        <a href="{{ route('admin.achievements.create') }}"><i class="feather icon-circle"></i><span
+                                class="menu-item" data-i18n="List">Add Achievement</span></a>
                     </li>
-                    <li class="{{ (request()->segment(2) == 'achievements' && request()->segment(3) != 'create') ? 'active' : '' }}"><a href="{{ route('admin.achievements.index') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Manage Achievement</span></a>
+                    <li
+                        class="{{ request()->segment(2) == 'achievements' && request()->segment(3) != 'create' ? 'active' : '' }}">
+                        <a href="{{ route('admin.achievements.index') }}"><i class="feather icon-circle"></i><span
+                                class="menu-item" data-i18n="View">Manage Achievement</span></a>
                     </li>
                 </ul>
             </li>
@@ -97,12 +126,19 @@
 
             <!-- Banners -->
 
-            <li class="nav-item {{ request()->segment(2) == 'banners' ? 'active' : '' }}"><a href="#"><i class="feather icon-airplay"></i><span class="menu-title">Banners</span>
+            <li class="nav-item {{ request()->segment(2) == 'banners' ? 'active' : '' }}"><a href="#"><i
+                        class="feather icon-airplay"></i><span class="menu-title">Banners</span>
                 </a>
                 <ul class="menu-content">
-                    <li class="{{ (request()->segment(2) == 'banners' && request()->segment(3) == 'create') ? 'active' : '' }}"><a href="{{ route('admin.banners.create') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Add Banner</span></a>
+                    <li
+                        class="{{ request()->segment(2) == 'banners' && request()->segment(3) == 'create' ? 'active' : '' }}">
+                        <a href="{{ route('admin.banners.create') }}"><i class="feather icon-circle"></i><span
+                                class="menu-item" data-i18n="List">Add Banner</span></a>
                     </li>
-                    <li class="{{ (request()->segment(2) == 'banners' && request()->segment(3) != 'create') ? 'active' : '' }}"><a href="{{ route('admin.banners.index') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Manage Banners</span></a>
+                    <li
+                        class="{{ request()->segment(2) == 'banners' && request()->segment(3) != 'create' ? 'active' : '' }}">
+                        <a href="{{ route('admin.banners.index') }}"><i class="feather icon-circle"></i><span
+                                class="menu-item" data-i18n="View">Manage Banners</span></a>
                     </li>
                 </ul>
             </li>
@@ -115,13 +151,15 @@
                     <span class="menu-title">Pages</span>
                 </a>
                 <ul class="menu-content">
-                    <li class="{{ (request()->segment(2) == 'pages' && request()->segment(3) == 'create') ? 'active' : '' }}">
+                    <li
+                        class="{{ request()->segment(2) == 'pages' && request()->segment(3) == 'create' ? 'active' : '' }}">
                         <a href="{{ route('admin.pages.create') }}">
                             <i class="feather icon-circle"></i>
                             <span class="menu-item" data-i18n="List">Add Page</span>
                         </a>
                     </li>
-                    <li class="{{ (request()->segment(2) == 'pages' && request()->segment(3) != 'create') ? 'active' : '' }}">
+                    <li
+                        class="{{ request()->segment(2) == 'pages' && request()->segment(3) != 'create' ? 'active' : '' }}">
                         <a href="{{ route('admin.pages.index') }}">
                             <i class="feather icon-circle"></i>
                             <span class="menu-item" data-i18n="View">Manage Pages</span>
@@ -132,49 +170,96 @@
 
             <!-- Testimonials -->
 
-            <li class="nav-item {{ request()->segment(2) == 'testimonials' ? 'active' : '' }}"><a href="#"><i class="feather icon-message-circle"></i><span class="menu-title">Testimonials</span>
+            <li class="nav-item {{ request()->segment(2) == 'testimonials' ? 'active' : '' }}"><a href="#"><i
+                        class="feather icon-message-circle"></i><span class="menu-title">Testimonials</span>
                 </a>
                 <ul class="menu-content">
-                    <li class="{{ (request()->segment(2) == 'testimonials' && request()->segment(3) == 'create') ? 'active' : '' }}"><a href="{{ route('admin.testimonials.create') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Add Testimonial</span></a>
+                    <li
+                        class="{{ request()->segment(2) == 'testimonials' && request()->segment(3) == 'create' ? 'active' : '' }}">
+                        <a href="{{ route('admin.testimonials.create') }}"><i class="feather icon-circle"></i><span
+                                class="menu-item" data-i18n="List">Add Testimonial</span></a>
                     </li>
-                    <li class="{{ (request()->segment(2) == 'testimonials' && request()->segment(3) != 'create') ? 'active' : '' }}"><a href="{{ route('admin.testimonials.index') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Manage Testimonials</span></a>
+                    <li
+                        class="{{ request()->segment(2) == 'testimonials' && request()->segment(3) != 'create' ? 'active' : '' }}">
+                        <a href="{{ route('admin.testimonials.index') }}"><i class="feather icon-circle"></i><span
+                                class="menu-item" data-i18n="View">Manage Testimonials</span></a>
                     </li>
                 </ul>
             </li>
 
             <!-- Working Process -->
-            <li class="nav-item {{ request()->segment(2) == 'working-process' ? 'active' : '' }}"><a href="#"><i class="feather icon-edit"></i><span class="menu-title">Working Process</span>
+            <li class="nav-item {{ request()->segment(2) == 'working-process' ? 'active' : '' }}"><a
+                    href="#"><i class="feather icon-edit"></i><span class="menu-title">Working Process</span>
                 </a>
                 <ul class="menu-content">
-                    <li class="{{ (request()->segment(2) == 'working-process' && request()->segment(3) == 'create') ? 'active' : '' }}"><a href="{{ route('admin.working-process.create') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Add Working Process</span></a>
+                    <li
+                        class="{{ request()->segment(2) == 'working-process' && request()->segment(3) == 'create' ? 'active' : '' }}">
+                        <a href="{{ route('admin.working-process.create') }}"><i
+                                class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Add Working
+                                Process</span></a>
                     </li>
-                    <li class="{{ (request()->segment(2) == 'working-process' && request()->segment(3) != 'create') ? 'active' : '' }}"><a href="{{ route('admin.working-process.index') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View" title="Manage Working Process">Manage Working Process</span></a>
+                    <li
+                        class="{{ request()->segment(2) == 'working-process' && request()->segment(3) != 'create' ? 'active' : '' }}">
+                        <a href="{{ route('admin.working-process.index') }}"><i class="feather icon-circle"></i><span
+                                class="menu-item" data-i18n="View" title="Manage Working Process">Manage Working
+                                Process</span></a>
                     </li>
                 </ul>
             </li>
 
             <!-- Industry -->
-            <li class="nav-item {{ request()->segment(2) == 'industries' ? 'active' : '' }}"><a href="#"><i class="feather icon-sliders"></i><span class="menu-title">Industries</span>
+            <li class="nav-item {{ request()->segment(2) == 'industries' ? 'active' : '' }}"><a href="#"><i
+                        class="feather icon-sliders"></i><span class="menu-title">Industries</span>
                 </a>
                 <ul class="menu-content">
-                    <li class="{{ (request()->segment(2) == 'industries' && request()->segment(3) == 'create') ? 'active' : '' }}"><a href="{{ route('admin.industries.create') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Add Industry</span></a>
+                    <li
+                        class="{{ request()->segment(2) == 'industries' && request()->segment(3) == 'create' ? 'active' : '' }}">
+                        <a href="{{ route('admin.industries.create') }}"><i class="feather icon-circle"></i><span
+                                class="menu-item" data-i18n="List">Add Industry</span></a>
                     </li>
-                    <li class="{{ (request()->segment(2) == 'industries' && request()->segment(3) != 'create') ? 'active' : '' }}"><a href="{{ route('admin.industries.index') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Manage Industry</span></a>
+                    <li
+                        class="{{ request()->segment(2) == 'industries' && request()->segment(3) != 'create' ? 'active' : '' }}">
+                        <a href="{{ route('admin.industries.index') }}"><i class="feather icon-circle"></i><span
+                                class="menu-item" data-i18n="View">Manage Industry</span></a>
                     </li>
                 </ul>
             </li>
             <!-- Technology -->
-            <li class="nav-item {{ request()->segment(2) == 'technologies' ? 'active' : '' }}"><a href="#"><i class="feather icon-move"></i><span class="menu-title">Technologies</span>
+            <li class="nav-item {{ request()->segment(2) == 'technologies' ? 'active' : '' }}"><a href="#"><i
+                        class="feather icon-move"></i><span class="menu-title">Technologies</span>
                 </a>
                 <ul class="menu-content">
-                    <li class="{{ (request()->segment(2) == 'technologies' && request()->segment(3) == 'create') ? 'active' : '' }}"><a href="{{ route('admin.technologies.create') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Add Technology</span></a>
+                    <li
+                        class="{{ request()->segment(2) == 'technologies' && request()->segment(3) == 'create' ? 'active' : '' }}">
+                        <a href="{{ route('admin.technologies.create') }}"><i class="feather icon-circle"></i><span
+                                class="menu-item" data-i18n="List">Add Technology</span></a>
                     </li>
-                    <li class="{{ (request()->segment(2) == 'technologies' && request()->segment(3) != 'create') ? 'active' : '' }}"><a href="{{ route('admin.technologies.index') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="View">Manage Technology</span></a>
+                    <li
+                        class="{{ request()->segment(2) == 'technologies' && request()->segment(3) != 'create' ? 'active' : '' }}">
+                        <a href="{{ route('admin.technologies.index') }}"><i class="feather icon-circle"></i><span
+                                class="menu-item" data-i18n="View">Manage Technology</span></a>
+                    </li>
+                </ul>
+            </li>
+            <!-- Blog -->
+            <li class="nav-item {{ request()->segment(2) == 'blog' ? 'active' : '' }}"><a href="#"><i
+                        class="feather icon-move"></i><span class="menu-title">Blogs</span>
+                </a>
+                <ul class="menu-content">
+                    <li
+                        class="{{ request()->segment(2) == 'blog' && request()->segment(3) == 'create' ? 'active' : '' }}">
+                        <a href="{{ route('admin.blogs.create') }}"><i class="feather icon-circle"></i><span
+                                class="menu-item" data-i18n="List">Add Blog</span></a>
+                    </li>
+                    <li
+                        class="{{ request()->segment(2) == 'blog' && request()->segment(3) != 'create' ? 'active' : '' }}">
+                        <a href="{{ route('admin.blogs.index') }}"><i class="feather icon-circle"></i><span
+                                class="menu-item" data-i18n="View">Manage Blog</span></a>
                     </li>
                 </ul>
             </li>
 
-            
+
             <!-- Contact -->
 
             <li class="nav-item {{ request()->segment(2) == 'contact' ? 'active' : '' }}">

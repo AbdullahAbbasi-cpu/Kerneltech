@@ -61,14 +61,14 @@ class WorkingProcessController extends Controller
         //     $isActive = $request->input('is_active');
         // }
 
-        if(isset($request)){
+        if (isset($request)) {
             $heading = $request->input('heading');
             $description = $request->input('description');
             $isActive = $request->input('is_active');
             $noOfSteps = $request->input('no_of_steps');
         }
 
-        
+
 
 
         for ($i = 1; $i <= 6; $i++) {
@@ -79,10 +79,11 @@ class WorkingProcessController extends Controller
             if ($request->hasFile($imageKey)) {
                 $file = $request->file($imageKey);
                 $extension = $file->getClientOriginalExtension();
-                $filename = 'working-process-image-' . $i . '-' . time() . '.' . $extension;
-                $file->move(uploadsDir('working-process'), $filename);
-                $data[$imageKey] = $filename;
-                ${'imageFileName_' . $i} = $filename;
+                $filename = 'working-process\working-process-image-' . $i . '-' . time() . '.' . 'webp';
+                // $file->move(uploadsDir('working-process'), $filename);
+                $convertedImage = convertImage($file, $filename);
+                $data[$imageKey] = $convertedImage->basename;
+                ${'imageFileName_' . $i} = $convertedImage->basename;
             }
 
             if ($request->has($titleKey)) {
@@ -130,7 +131,7 @@ class WorkingProcessController extends Controller
      */
     public function show(string $id)
     {
-        $WorkingProcess = WorkingProcess::where('id',$id)->first();
+        $WorkingProcess = WorkingProcess::where('id', $id)->first();
         return view('admin.working-process.show', compact('WorkingProcess'));
     }
 
@@ -156,9 +157,10 @@ class WorkingProcessController extends Controller
             if ($request->hasFile("image_$i")) {
                 $file = $request->file("image_$i");
                 $extension = $file->getClientOriginalExtension();
-                $filename = 'working-process-image-' . $i . '-' . time() . '.' . $extension;
-                $file->move(uploadsDir('working-process'), $filename);
-                $data["image_$i"] = $filename;
+                $filename = 'working-process\working-process-image-' . $i . '-' . time() . '.' . 'webp';
+                // $file->move(uploadsDir('working-process'), $filename);
+                $convertedImage = convertImage($file, $filename);
+                $data["image_$i"] = $convertedImage->basename;
             }
             $data["title_$i"] = $request->input("title_$i");
             $data["description_$i"] = $request->input("description_$i");
@@ -177,13 +179,13 @@ class WorkingProcessController extends Controller
     public function destroy(string $id)
     {
         $data = WorkingProcess::find($id);
-        
+
         if ($data) {
             if ($data->image != '' && file_exists(uploadsDir('working-process') . $data->image)) {
                 unlink(uploadsDir('working-process') . $data->image);
             }
             WorkingProcess::where('id', $id)->delete();
-        } 
+        }
 
         return redirect()
             ->route('admin.working-process.index')
@@ -193,7 +195,7 @@ class WorkingProcessController extends Controller
 
 
     public function isActive(Request $request)
-    {           
+    {
         if (isset($request)) {
             $id = $request->id;
             $isChecked = $request->isChecked;
@@ -202,6 +204,6 @@ class WorkingProcessController extends Controller
             return response()->json(['message' => ucfirst($request->type) . ' page updated successfully']);
         } else {
             return response()->json(['message' => 'Invalid type provided'], 400);
-        }        
+        }
     }
 }

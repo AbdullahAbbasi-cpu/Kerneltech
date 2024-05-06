@@ -44,7 +44,7 @@ class TechnologiesController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(StoreTechnologiesRequest $request)
-    {   
+    {
         $data = $request->except([
             '_token',
             '_method',
@@ -55,10 +55,10 @@ class TechnologiesController extends Controller
         if ($request->hasFile('image')) {
             $file          = $request->file('image');
             $extension     = $file->getClientOriginalExtension();
-            $filename      = 'technology-image-'.time() . '.' . $extension;
-            $file->move(uploadsDir('technologies'), $filename);
-            $data['image'] = $filename;
-            $imageFileName = $filename;
+            $filename      = 'technologies\technology-image-' . time() . '.' . 'webp';
+            $convertedImage = convertImage($file, $filename);
+            $data['image'] = $convertedImage->basename;
+            $imageFileName = $convertedImage->basename;
         }
         $Banner = technologies::create([
             'title' => $request->title,
@@ -75,7 +75,7 @@ class TechnologiesController extends Controller
      */
     public function show(string $id)
     {
-        $Technology = technologies::where('id',$id)->first();
+        $Technology = technologies::where('id', $id)->first();
         return view('admin.technologies.show', compact('Technology'));
     }
 
@@ -98,15 +98,15 @@ class TechnologiesController extends Controller
         if ($request->hasFile('image')) {
             $file          = $request->file('image');
             $extension     = $file->getClientOriginalExtension();
-            $filename      = 'technology-img-'.time() . '.' . $extension;
-            $file->move(uploadsDir('technologies'), $filename);
-            $data['image'] = $filename;
-            $imageFileName = $filename;
+            $filename      = 'technologies\technology-img-' . time() . '.' . 'webp';
+            $convertedImage = convertImage($file, $filename);
+            $data['image'] = $convertedImage->basename;
+            $imageFileName = $convertedImage->basename;
         }
         $Technology = technologies::where('id', $id)->first();
         if ($Technology) {
             $updateData = [
-                'title' => $request->title,      
+                'title' => $request->title,
                 'is_active' => $request->is_active,
             ];
 
@@ -131,13 +131,13 @@ class TechnologiesController extends Controller
     public function destroy(string $id)
     {
         $data = technologies::find($id);
-        
-       if ($data) {
+
+        if ($data) {
             if ($data->image != '' && file_exists(uploadsDir('technologies') . $data->image)) {
                 unlink(uploadsDir('technologies') . $data->image);
             }
             technologies::where('id', $id)->delete();
-        } 
+        }
 
         return redirect()
             ->route('admin.technologies.index')
@@ -145,7 +145,7 @@ class TechnologiesController extends Controller
     }
 
     public function isActive(Request $request)
-    {           
+    {
         if (isset($request)) {
             $id = $request->id;
             $isChecked = $request->isChecked;
@@ -154,6 +154,6 @@ class TechnologiesController extends Controller
             return response()->json(['message' => ucfirst($request->type) . ' page updated successfully']);
         } else {
             return response()->json(['message' => 'Invalid type provided'], 400);
-        }        
+        }
     }
 }

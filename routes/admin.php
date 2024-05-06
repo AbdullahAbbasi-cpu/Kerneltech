@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('admin', 'IndexController@index')->name('login'); 
+Route::get('admin', 'IndexController@index')->name('login');
 Route::name('admin.')->group(
     function () {
 
-    	Route::get('/', 'IndexController@index');
+        Route::get('/', 'IndexController@index');
 
         # to show login form
         Route::get('/auth/login', [
@@ -77,6 +77,8 @@ Route::name('admin.')->group(
         Route::resource('technologies', 'technologiesController');
         Route::post('technologies/front', 'technologiesController@isActive')->name('technologies.front');
         Route::resource('industries', 'industriesController');
+        Route::resource('blogs', 'blogController');
+        Route::post('blogs/front', 'blogController@isActive')->name('blogs.front');
         Route::post('industries/front', 'industriesController@isActive')->name('industries.front');
         Route::resource('news', 'NewsController');
         Route::resource('achievements', 'achievementsController');
@@ -84,7 +86,5 @@ Route::name('admin.')->group(
         Route::resource('our-people', 'OurPeopleController');
         Route::post('media/reorder', 'MediaController@reorder')->name('media.reorder');
         Route::post('news/front', 'NewsController@frontPage')->name('news.front');
-        
-
     }
 );

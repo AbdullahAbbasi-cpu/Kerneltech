@@ -30,9 +30,9 @@ class AdministratorsController extends Controller
     {
         $data = Admin::all();
 
-        return view('admin.administrators.index',compact('data'));
+        return view('admin.administrators.index', compact('data'));
     }
- 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -58,33 +58,33 @@ class AdministratorsController extends Controller
         ]);
 
         //move | upload file on server
-         if ($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
             $file          = $request->file('image');
             $extension     = $file->getClientOriginalExtension();
-            $filename      = 'admin-profile-'.time() . '.' . $extension;
-            $file->move(uploadsDir('admin'), $filename);
-            $data['image'] = $filename;
+            $filename      = 'admin\admin-profile-' . time() . '.' . 'webp';
+            $convertedImage = convertImage($file, $filename);
+            $data['image'] = $convertedImage->basename;
         }
 
         $password         = generateRandomString(8);
         $data['password'] = bcrypt($password);
 
-            if ($data['email'] != '') {
-                Mail::send( 
-                    'emails.admin.created',
-                    [
-                        'data'     => $data,
-                        'password' => $password,
-                    ],
-                    function ($message) use ($data) {
-                        $email   = $data['email'];
-                        $message->to($email, $email);
-                        $message->replyTo(config('mail.from.address'), config('mail.from.name'));
-                        $subject = "Account created.";
-                        $message->subject($subject);
-                    }
-                );
-            }
+        if ($data['email'] != '') {
+            Mail::send(
+                'emails.admin.created',
+                [
+                    'data'     => $data,
+                    'password' => $password,
+                ],
+                function ($message) use ($data) {
+                    $email   = $data['email'];
+                    $message->to($email, $email);
+                    $message->replyTo(config('mail.from.address'), config('mail.from.name'));
+                    $subject = "Account created.";
+                    $message->subject($subject);
+                }
+            );
+        }
 
         // generate-random-8digits-password (send in mail & store in DB).
 
@@ -104,7 +104,7 @@ class AdministratorsController extends Controller
     public function show($id)
     {
         $data = Admin::find($id);
-        
+
         return view('admin.administrators.show', compact('data'));
     }
 
@@ -116,14 +116,12 @@ class AdministratorsController extends Controller
      */
     public function edit($id)
     {
-      $data = Admin::find($id);
+        $data = Admin::find($id);
         if (auth()->user()->is_system_admin == 1 || auth()
-            ->user()->id == $data->id || $data->is_system_admin == 0)
-        {
+            ->user()->id == $data->id || $data->is_system_admin == 0
+        ) {
             return view('admin.administrators.edit', compact('data'));
-        }
-        else
-        {
+        } else {
             return redirect()
                 ->route('admin.administrators.index')
                 ->with('error', 'You can not change other admin details.');
@@ -141,47 +139,46 @@ class AdministratorsController extends Controller
     {
 
         if (auth()->user()->is_system_admin == 1 || auth()
-    ->user()->id == $data->id || $data->is_system_admin == 0)
-     {
+            ->user()->id == $data->id || $data->is_system_admin == 0
+        ) {
 
-        $data = $request->except([
-            '_token',
-            '_method',
-            'email',
-            'previous_image',
-            'image',
-            'password',
-            'password_confirmation'
-        ]);
+            $data = $request->except([
+                '_token',
+                '_method',
+                'email',
+                'previous_image',
+                'image',
+                'password',
+                'password_confirmation'
+            ]);
 
-        //move | upload file on server
-         if ($request->hasFile('image')) {
-            $file      = $request->file('image');
-            $extension = $file->getClientOriginalExtension();
-            $filename  = 'admin-profile-'.time() . '.' . $extension;
-            $file->move(uploadsDir('admin'), $filename);
+            //move | upload file on server
+            if ($request->hasFile('image')) {
+                $file      = $request->file('image');
+                $extension = $file->getClientOriginalExtension();
+                $filename  = 'admin\admin-profile-' . time() . '.' . 'webp';
+                $convertedImage = convertImage($file, $filename);
 
-            if ($request->previous_image != '' && file_exists(uploadsDir('admin') . $request->previous_image)) {
-                unlink(uploadsDir('admin') . $request->previous_image);
+                if ($request->previous_image != '' && file_exists(uploadsDir('admin') . $request->previous_image)) {
+                    unlink(uploadsDir('admin') . $request->previous_image);
+                }
+
+                $data['image'] = $convertedImage->basename;
             }
 
-            $data['image'] = $filename;
+            if (isset($request->password) && $request->password != '') {
+                $data['password'] = bcrypt($request->password);
+            }
+
+            Admin::where('id', $id)->update($data);
+
+            return redirect()
+                ->route('admin.administrators.index')
+                ->with('success', 'Administrator has been updated successfully.');
         }
-
-        if (isset($request->password) && $request->password !='') {
-            $data['password'] = bcrypt($request->password);
-        }
-
-        Admin::where('id', $id)->update($data);
-
         return redirect()
             ->route('admin.administrators.index')
-            ->with('success', 'Administrator has been updated successfully.');
-        }
-         return redirect()
-                ->route('admin.administrators.index')
-                ->with('error', 'You can not change other admin details.');
-
+            ->with('error', 'You can not change other admin details.');
     }
 
     /**
@@ -218,7 +215,7 @@ class AdministratorsController extends Controller
 
 
     public function isActive(Request $request)
-    {           
+    {
         if (isset($request)) {
             $id = $request->id;
             $isChecked = $request->isChecked;
@@ -227,6 +224,6 @@ class AdministratorsController extends Controller
             return response()->json(['message' => ucfirst($request->type) . ' page updated successfully']);
         } else {
             return response()->json(['message' => 'Invalid type provided'], 400);
-        }        
+        }
     }
 }

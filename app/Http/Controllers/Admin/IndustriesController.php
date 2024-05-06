@@ -10,7 +10,7 @@ use App\Http\Requests\Admin\UpdateIndustriesRequest;
 
 class IndustriesController extends Controller
 {
-     /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -42,7 +42,7 @@ class IndustriesController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(StoreIndustriesRequest $request)
-    {   
+    {
         $data = $request->except([
             '_token',
             '_method',
@@ -53,10 +53,11 @@ class IndustriesController extends Controller
         if ($request->hasFile('image')) {
             $file          = $request->file('image');
             $extension     = $file->getClientOriginalExtension();
-            $filename      = 'industry-image-'.time() . '.' . $extension;
-            $file->move(uploadsDir('industries'), $filename);
-            $data['image'] = $filename;
-            $imageFileName = $filename;
+            $filename      = 'industries\industry-image-' . time() . '.' . 'webp';
+            // $file->move(uploadsDir('industries'), $filename);
+            $convertedImage = convertImage($file, $filename);
+            $data['image'] = $convertedImage->basename;
+            $imageFileName = $convertedImage->basename;
         }
         $Banner = industries::create([
             'title' => $request->title,
@@ -73,7 +74,7 @@ class IndustriesController extends Controller
      */
     public function show(string $id)
     {
-        $Industry = industries::where('id',$id)->first();
+        $Industry = industries::where('id', $id)->first();
         return view('admin.industries.show', compact('Industry'));
     }
 
@@ -95,15 +96,15 @@ class IndustriesController extends Controller
         if ($request->hasFile('image')) {
             $file          = $request->file('image');
             $extension     = $file->getClientOriginalExtension();
-            $filename      = 'industry-img-'.time() . '.' . $extension;
-            $file->move(uploadsDir('industries'), $filename);
-            $data['image'] = $filename;
-            $imageFileName = $filename;
+            $filename      = 'industries\industry-img-' . time() . '.' . $extension;
+            $convertedImage = convertImage($file, $filename);
+            $data['image'] = $convertedImage->basename;
+            $imageFileName = $convertedImage->basename;
         }
         $Industry = industries::where('id', $id)->first();
         if ($Industry) {
             $updateData = [
-                'title' => $request->title,      
+                'title' => $request->title,
                 'is_active' => $request->is_active,
             ];
 
@@ -126,14 +127,14 @@ class IndustriesController extends Controller
      */
     public function destroy(string $id)
     {
-    $data = industries::find($id);
-        
-       if ($data) {
+        $data = industries::find($id);
+
+        if ($data) {
             if ($data->image != '' && file_exists(uploadsDir('industries') . $data->image)) {
                 unlink(uploadsDir('industries') . $data->image);
             }
             industries::where('id', $id)->delete();
-        } 
+        }
 
         return redirect()
             ->route('admin.industries.index')
@@ -141,7 +142,7 @@ class IndustriesController extends Controller
     }
 
     public function isActive(Request $request)
-    {           
+    {
         if (isset($request)) {
             $id = $request->id;
             $isChecked = $request->isChecked;
@@ -150,6 +151,6 @@ class IndustriesController extends Controller
             return response()->json(['message' => ucfirst($request->type) . ' page updated successfully']);
         } else {
             return response()->json(['message' => 'Invalid type provided'], 400);
-        }        
+        }
     }
 }

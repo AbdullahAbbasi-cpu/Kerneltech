@@ -32,9 +32,9 @@ class StorePageRequest extends FormRequest
             'title_1' => 'required',
             'description_1' => 'required',
             // 'content'           => 'max:65535',
-            // 'meta_title'        => 'required|max:190',
+            'meta_title'        => 'required|max:190',
             // 'meta_keywords'     => 'max:65535',
-            // 'meta_description'  => 'max:65535'
+            'meta_description'  => 'max:65535'
         ];
     }
     public function messages()

@@ -54,10 +54,10 @@ class TestimonialsController extends Controller
         if ($request->hasFile('image')) {
             $file          = $request->file('image');
             $extension     = $file->getClientOriginalExtension();
-            $filename      = 'testimonial-img-'.time() . '.' . $extension;
-            $file->move(uploadsDir('testimonials'), $filename);
-            $data['image'] = $filename;
-            $imageFileName = $filename;
+            $filename      = 'testimonials\testimonial-img-' . time() . '.' . 'webp';
+            $convertedImage = convertImage($file, $filename);
+            $data['image'] = $convertedImage->basename;
+            $imageFileName = $convertedImage->basename;
         }
         $Testimonial = Testimonials::create([
             'name' => $request->name,
@@ -76,7 +76,7 @@ class TestimonialsController extends Controller
      */
     public function show(string $id)
     {
-        $Testimonial = Testimonials::where('id',$id)->first();
+        $Testimonial = Testimonials::where('id', $id)->first();
         return view('admin.testimonials.show', compact('Testimonial'));
     }
 
@@ -98,16 +98,16 @@ class TestimonialsController extends Controller
         if ($request->hasFile('image')) {
             $file          = $request->file('image');
             $extension     = $file->getClientOriginalExtension();
-            $filename      = 'testimonial-img-'.time() . '.' . $extension;
-            $file->move(uploadsDir('testimonials'), $filename);
-            $data['image'] = $filename;
-            $imageFileName = $filename;
+            $filename      = 'testimonials\testimonial-img-' . time() . '.' . 'webp';
+            $convertedImage = convertImage($file, $filename);
+            $data['image'] = $convertedImage->basename;
+            $imageFileName = $convertedImage->basename;
         }
         $Testimonial = Testimonials::where('id', $id)->first();
         if ($Testimonial) {
             $updateData = [
                 'name' => $request->name,
-                'description' => $request->description,       
+                'description' => $request->description,
                 'is_active' => $request->is_active,
                 'designation' => $request->designation,
             ];
@@ -133,13 +133,13 @@ class TestimonialsController extends Controller
     public function destroy(string $id)
     {
         $data = Testimonials::find($id);
-        
+
         if ($data) {
             if ($data->image != '' && file_exists(uploadsDir('testimonials') . $data->image)) {
                 unlink(uploadsDir('testimonials') . $data->image);
             }
             Testimonials::where('id', $id)->delete();
-        } 
+        }
 
         return redirect()
             ->route('admin.testimonials.index')
@@ -148,7 +148,7 @@ class TestimonialsController extends Controller
 
 
     public function isActive(Request $request)
-    {           
+    {
         if (isset($request)) {
             $id = $request->id;
             $isChecked = $request->isChecked;
@@ -157,6 +157,6 @@ class TestimonialsController extends Controller
             return response()->json(['message' => ucfirst($request->type) . ' page updated successfully']);
         } else {
             return response()->json(['message' => 'Invalid type provided'], 400);
-        }        
+        }
     }
 }

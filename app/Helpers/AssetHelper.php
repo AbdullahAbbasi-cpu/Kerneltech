@@ -5,6 +5,8 @@
  *
  */
 
+use Intervention\Image\Facades\Image;
+
 /**
  * Return's admin assets directory
  *
@@ -90,4 +92,15 @@ function filterUrl($key = '', $value = '')
     $data = str_replace('&&', '&', $data);
 
     return $data;
+}
+
+function convertImage($file, $filename)
+{
+    $image = Image::make($file);
+    $image->resize(800, null, function ($constraint) {
+        $constraint->aspectRatio();
+    });
+    $image->encode('webp', 75);
+
+    return $image->save(public_path('uploads/' . $filename));
 }

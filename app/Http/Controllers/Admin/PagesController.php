@@ -23,7 +23,8 @@ class PagesController extends Controller
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('auth:admin');
     }
 
@@ -52,16 +53,16 @@ class PagesController extends Controller
         $technologies = Technologies::where('is_active', 1)->pluck('title')->toArray();
         $testimonials = Testimonials::where('is_active', 1)->pluck('name')->toArray();
 
-        
+
         $achievements = Achievements::where('is_active', 1)->pluck('icon_text')->toArray();
         // we can use this condition once the services records starts to appear on page table
         $services = Page::where('is_active', 1)
-                ->where('page_template', 'services')
-                ->pluck('title')
-                ->toArray();
+            ->where('page_template', 'services')
+            ->pluck('title')
+            ->toArray();
 
 
-        return view('admin.pages.create', compact('headings', 'industries', 'technologies', 'testimonials', 'achievements','services'));
+        return view('admin.pages.create', compact('headings', 'industries', 'technologies', 'testimonials', 'achievements', 'services'));
     }
 
     /**
@@ -78,15 +79,16 @@ class PagesController extends Controller
             '_method'
         ]);
 
+        // return dd($request);
         // for uploading services icon 
         if ($request->hasFile('icon')) {
             $file          = $request->file('icon');
             $extension     = $file->getClientOriginalExtension();
-            $filename      = 'services-icon-'.time() . '.' . $extension;
-            $file->move(uploadsDir('pages'), $filename);
-            $data['icon'] = $filename;
-            $pageIcon = $filename;
-        } 
+            $filename      = 'pages\services-icon-' . time() . '.' . 'webp';
+            $convertedImage = convertImage($file, $filename);
+            $data['icon'] = $convertedImage->basename;
+            $pageIcon = $convertedImage->basename;
+        }
 
 
         // FOR FIRST STEP
@@ -166,10 +168,11 @@ class PagesController extends Controller
             if ($request->hasFile($imageKey)) {
                 $file = $request->file($imageKey);
                 $extension = $file->getClientOriginalExtension();
-                $filename = 'page-card-' . $i . '-' . time() . '.' . $extension;
-                $file->move(uploadsDir('pages'), $filename);
-                $data[$imageKey] = $filename;
-                ${'imageFileName_' . $i} = $filename;
+                $filename = 'pages\page-card-' . $i . '-' . time() . '.' . 'webp';
+                // $file->move(uploadsDir('pages'), $filename);
+                $convertedImage = convertImage($file, $filename);
+                $data[$imageKey] = $convertedImage->basename;
+                ${'imageFileName_' . $i} = $convertedImage->basename;
             }
 
             if ($request->has($titleKey)) {
@@ -183,19 +186,19 @@ class PagesController extends Controller
         // if (isset($data['industries_to_show'])) {
         //     $data['industries_to_show'] = json_encode($data['industries_to_show']);
         // }
-        
+
         // if (isset($data['technologies_to_show'])) {
         //     $data['technologies_to_show'] = json_encode($data['technologies_to_show']);
         // }
-        
+
         // if (isset($data['st_testimonials_to_show'])) {
         //     $data['st_testimonials_to_show'] = json_encode($data['st_testimonials_to_show']);
         // }
-        
+
         // if (isset($data['ht_testimonials_to_show'])) {
         //     $data['ht_testimonials_to_show'] = json_encode($data['ht_testimonials_to_show']);
         // }
-        
+
         // if (isset($data['achievements_to_show'])) {
         //     $data['achievements_to_show'] = json_encode($data['achievements_to_show']);
         // }
@@ -211,10 +214,10 @@ class PagesController extends Controller
         }
 
 
-        
+
         Page::create($data);
 
-        
+
 
         return redirect()
             ->route('admin.pages.index')
@@ -230,7 +233,7 @@ class PagesController extends Controller
     public function show($id)
     {
         $data = Page::getPageDetailsWithMedia(['pages.id' => $id]);
-        
+
         return view('admin.pages.show', compact('data'));
     }
 
@@ -297,7 +300,7 @@ class PagesController extends Controller
 
 
     public function isActive(Request $request)
-    {           
+    {
         if (isset($request)) {
             $id = $request->id;
             $isChecked = $request->isChecked;
@@ -306,6 +309,6 @@ class PagesController extends Controller
             return response()->json(['message' => ucfirst($request->type) . ' page updated successfully']);
         } else {
             return response()->json(['message' => 'Invalid type provided'], 400);
-        }        
+        }
     }
 }
