@@ -26,8 +26,7 @@ class UpdateBlogRequest extends FormRequest
         return [
             'title' => 'required',
             // 'description' => 'required',
-            'feautured_image' => 'required|file|mimes:jpeg,jpg,png,webp|max:5120',
-            'author_picture' => 'required|file|mimes:jpeg,jpg,png,webp|max:5120',
+
             'author_name' => 'required',
             'author_description' => 'required',
             'description' => 'required',
@@ -38,8 +37,6 @@ class UpdateBlogRequest extends FormRequest
 
     public function messages()
     {
-        return [
-            'image.required' => 'The Updation of Image field is required',
-        ];
+        return [];
     }
 }

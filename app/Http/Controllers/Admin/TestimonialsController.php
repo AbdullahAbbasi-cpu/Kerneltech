@@ -54,6 +54,11 @@ class TestimonialsController extends Controller
         if ($request->hasFile('image')) {
             $file          = $request->file('image');
             $extension     = $file->getClientOriginalExtension();
+            $path = public_path('uploads/testimonials');
+            if (!file_exists($path)) {
+                // Create the directory if it doesn't exist
+                mkdir($path, 0777, true);
+            }
             $filename      = 'testimonials\testimonial-img-' . time() . '.' . 'webp';
             $convertedImage = convertImage($file, $filename);
             $data['image'] = $convertedImage->basename;
@@ -98,6 +103,11 @@ class TestimonialsController extends Controller
         if ($request->hasFile('image')) {
             $file          = $request->file('image');
             $extension     = $file->getClientOriginalExtension();
+            $path = public_path('uploads/testimonials');
+            if (!file_exists($path)) {
+                // Create the directory if it doesn't exist
+                mkdir($path, 0777, true);
+            }
             $filename      = 'testimonials\testimonial-img-' . time() . '.' . 'webp';
             $convertedImage = convertImage($file, $filename);
             $data['image'] = $convertedImage->basename;

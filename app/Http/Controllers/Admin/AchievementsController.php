@@ -40,7 +40,7 @@ class AchievementsController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(StoreAchievementsRequest $request)
-    {   
+    {
         $data = $request->except([
             '_token',
             '_method',
@@ -51,10 +51,15 @@ class AchievementsController extends Controller
         if ($request->hasFile('icon')) {
             $file          = $request->file('icon');
             $extension     = $file->getClientOriginalExtension();
-            $filename      = 'achievement-icon-'.time() . '.' . $extension;
-            $file->move(uploadsDir('achievements'), $filename);
-            $data['icon'] = $filename;
-            $imageFileName = $filename;
+            $path = public_path('uploads/achievements');
+            if (!file_exists($path)) {
+                // Create the directory if it doesn't exist
+                mkdir($path, 0777, true);
+            }
+            $filename      = 'achievement-icon-' . time() . '.' . 'webp';
+            $convertedImage = convertImage($file, $filename);
+            $data['icon'] = $convertedImage->basename;
+            $imageFileName = $convertedImage->basename;
         }
         $Banner = achievements::create([
             'icon_text' => $request->icon_text,
@@ -73,7 +78,7 @@ class AchievementsController extends Controller
      */
     public function show(string $id)
     {
-        $Achievement = achievements::where('id',$id)->first();
+        $Achievement = achievements::where('id', $id)->first();
         return view('admin.achievements.show', compact('Achievement'));
     }
 
@@ -95,10 +100,16 @@ class AchievementsController extends Controller
         if ($request->hasFile('icon')) {
             $file          = $request->file('icon');
             $extension     = $file->getClientOriginalExtension();
-            $filename      = 'achievement-icon-'.time() . '.' . $extension;
-            $file->move(uploadsDir('achievements'), $filename);
-            $data['icon'] = $filename;
-            $imageFileName = $filename;
+            $path = public_path('uploads/achievements');
+            if (!file_exists($path)) {
+                // Create the directory if it doesn't exist
+                mkdir($path, 0777, true);
+            }
+            $filename      = 'achievement-icon-' . time() . '.' . 'webp';
+            // $file->move(uploadsDir('achievements'), $filename);
+            $convertedImage = convertImage($file, $filename);
+            $data['icon'] = $convertedImage->basename;
+            $imageFileName = $convertedImage->basename;
         }
         $Achievement = achievements::where('id', $id)->first();
         if ($Achievement) {
@@ -126,21 +137,21 @@ class AchievementsController extends Controller
     public function destroy(string $id)
     {
         $data = achievements::find($id);
-            
-           if ($data) {
-                if ($data->images != '' && file_exists(uploadsDir('achievements') . $data->images)) {
-                    unlink(uploadsDir('achievements') . $data->images);
-                }
-                achievements::where('id', $id)->delete();
+
+        if ($data) {
+            if ($data->images != '' && file_exists(uploadsDir('achievements') . $data->images)) {
+                unlink(uploadsDir('achievements') . $data->images);
             }
-    
-            return redirect()
-                ->route('admin.achievements.index')
-                ->with('success', 'achievement was removed successfully!');
+            achievements::where('id', $id)->delete();
+        }
+
+        return redirect()
+            ->route('admin.achievements.index')
+            ->with('success', 'achievement was removed successfully!');
     }
 
     public function isActive(Request $request)
-    {           
+    {
         if (isset($request)) {
             $id = $request->id;
             $isChecked = $request->isChecked;
@@ -149,6 +160,6 @@ class AchievementsController extends Controller
             return response()->json(['message' => ucfirst($request->type) . ' page updated successfully']);
         } else {
             return response()->json(['message' => 'Invalid type provided'], 400);
-        }        
+        }
     }
 }

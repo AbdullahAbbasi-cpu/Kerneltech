@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\StoreBlogRequest;
 use App\Http\Requests\Admin\UpdateBlogRequest;
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
@@ -53,6 +54,13 @@ class BlogController extends Controller
             $file          = $request->file('featured_image');
 
             $extension     = $file->getClientOriginalExtension();
+            $path = public_path('uploads/blogs');
+
+            // Check if the directory exists
+            if (!file_exists($path)) {
+                // Create the directory if it doesn't exist
+                mkdir($path, 0777, true);
+            }
             $filename      = 'blogs\blog-image-' . time() . '.' . 'webp';
             //converted image to webp with compress sizing
             $convertedImage = convertImage($file, $filename);
@@ -65,6 +73,11 @@ class BlogController extends Controller
         if ($request->hasFile('author_picture')) {
             $file          = $request->file('author_picture');
             $extension     = $file->getClientOriginalExtension();
+            $path = public_path('uploads/blogs');
+            if (!file_exists($path)) {
+                // Create the directory if it doesn't exist
+                mkdir($path, 0777, true);
+            }
             $filename      = 'blogs\blog-image-' . time() + 1 . '.' . 'webp';
             // $file->move(uploadsDir('blogs'), $filename);
             //converted image to webp with compress sizing
@@ -112,32 +125,37 @@ class BlogController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateBlogRequest $request, string $id)
     {
 
 
         // dd($request->hasFile('image_input'));
         // dd($request->hasFile('auth_image_input'));
         $FeauturedImageFileName = '';
-        if ($request->hasFile('image_input')) {
-            $file          = $request->file('image_input');
+        if ($request->hasFile('featured_image')) {
+            $file          = $request->file('featured_image');
             $extension     = $file->getClientOriginalExtension();
+            $path = public_path('uploads/blogs');
+            if (!file_exists($path)) {
+                // Create the directory if it doesn't exist
+                mkdir($path, 0777, true);
+            }
             $filename      = 'blogs\blog-image-' . time() . '.' . 'webp';
             // $file->move(uploadsDir('blogs'), $filename);
             //converted image to webp and compress
             $convertedImage = convertImage($file, $filename);
-            $data['image_input'] = $convertedImage->basename;
+            $data['featured_image'] = $convertedImage->basename;
             $FeauturedImageFileName = $convertedImage->basename;
         }
         $AuthorImageFileName = '';
-        if ($request->hasFile('auth_image_input')) {
-            $file          = $request->file('auth_image_input');
+        if ($request->hasFile('author_picture')) {
+            $file          = $request->file('author_picture');
             $extension     = $file->getClientOriginalExtension();
             $filename      = 'blogs\blog-image-' . time() + 1 . '.' . 'webp';
             // $file->move(uploadsDir('blogs'), $filename);
             //converted image to webp and compress
             $convertedImage = convertImage($file, $filename);
-            $data['auth_image_input'] = $convertedImage->basename;
+            $data['author_picture'] = $convertedImage->basename;
             $AuthorImageFileName = $convertedImage->basename;
         }
 

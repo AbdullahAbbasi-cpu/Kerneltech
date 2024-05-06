@@ -93,7 +93,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group mb-1">
                                                 <label>Author Name</label>
-                                                <input type="text" name="author_name" value="{{ old('title') }}"
+                                                <input type="text" name="author_name" value="{{ old('author_name') }}"
                                                     placeholder="Name..." class="form-control">
                                             </div>
                                         </div>
@@ -136,7 +136,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group mb-1">
                                                 <label>Category</label>
-                                                <input type="text" name="category" value="{{ old('title') }}"
+                                                <input type="text" name="category" value="{{ old('category') }}"
                                                     placeholder="Add category..." class="form-control">
                                             </div>
                                         </div>

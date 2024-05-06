@@ -53,6 +53,11 @@ class IndustriesController extends Controller
         if ($request->hasFile('image')) {
             $file          = $request->file('image');
             $extension     = $file->getClientOriginalExtension();
+            $path = public_path('uploads/industries');
+            if (!file_exists($path)) {
+                // Create the directory if it doesn't exist
+                mkdir($path, 0777, true);
+            }
             $filename      = 'industries\industry-image-' . time() . '.' . 'webp';
             // $file->move(uploadsDir('industries'), $filename);
             $convertedImage = convertImage($file, $filename);
@@ -96,7 +101,7 @@ class IndustriesController extends Controller
         if ($request->hasFile('image')) {
             $file          = $request->file('image');
             $extension     = $file->getClientOriginalExtension();
-            $filename      = 'industries\industry-img-' . time() . '.' . $extension;
+            $filename      = 'industries\industry-img-' . time() . '.' . 'webp';
             $convertedImage = convertImage($file, $filename);
             $data['image'] = $convertedImage->basename;
             $imageFileName = $convertedImage->basename;

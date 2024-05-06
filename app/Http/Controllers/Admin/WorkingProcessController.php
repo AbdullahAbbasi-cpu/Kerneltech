@@ -79,6 +79,11 @@ class WorkingProcessController extends Controller
             if ($request->hasFile($imageKey)) {
                 $file = $request->file($imageKey);
                 $extension = $file->getClientOriginalExtension();
+                $path = public_path('uploads/working-process');
+                if (!file_exists($path)) {
+                    // Create the directory if it doesn't exist
+                    mkdir($path, 0777, true);
+                }
                 $filename = 'working-process\working-process-image-' . $i . '-' . time() . '.' . 'webp';
                 // $file->move(uploadsDir('working-process'), $filename);
                 $convertedImage = convertImage($file, $filename);
@@ -156,6 +161,11 @@ class WorkingProcessController extends Controller
         for ($i = 1; $i <= 6; $i++) {
             if ($request->hasFile("image_$i")) {
                 $file = $request->file("image_$i");
+                $path = public_path('uploads/working-process');
+                if (!file_exists($path)) {
+                    // Create the directory if it doesn't exist
+                    mkdir($path, 0777, true);
+                }
                 $extension = $file->getClientOriginalExtension();
                 $filename = 'working-process\working-process-image-' . $i . '-' . time() . '.' . 'webp';
                 // $file->move(uploadsDir('working-process'), $filename);

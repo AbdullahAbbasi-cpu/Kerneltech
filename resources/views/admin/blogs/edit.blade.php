@@ -19,10 +19,10 @@
                                         <div class="col-sm-6">
                                             <div
                                                 class="form-group mb-0 d-flex flex-column-reverse align-items-start justify-content-center">
-                                                <input type="hidden" name="image_input" id="image_input"
+                                                <input type="hidden" name="featured_image" id="image_input"
                                                     value="{{ $data->featured_image }}">
-                                                <input type="file" name="image_input" id="file_featured" class="d-none"
-                                                    accept="image/*">
+                                                <input type="file" name="featured_image" id="file_featured"
+                                                    class="d-none" accept="image/*">
                                                 <button type="button"
                                                     onclick="document.getElementById('file_featured').click()"
                                                     class="btn btn-primary my-1" id="uploadButton">Change blog
@@ -56,10 +56,10 @@
                                         <div class="col-sm-6">
                                             <div
                                                 class="form-group mb-0 d-flex flex-column-reverse align-items-start justify-content-center">
-                                                <input type="hidden" name="auth_image_input" id="auth_image_input"
+                                                <input type="hidden" name="author_picture" id="auth_image_input"
                                                     value="{{ $data->author_picture }}">
-                                                <input type="file" name="auth_image_input" id="file_author"
-                                                    class="d-none" accept="image/*">
+                                                <input type="file" name="author_picture" id="file_author" class="d-none"
+                                                    accept="image/*">
                                                 <button type="button"
                                                     onclick="document.getElementById('file_author').click()"
                                                     class="btn btn-primary my-1" id="uploadButton">Change Author Picture

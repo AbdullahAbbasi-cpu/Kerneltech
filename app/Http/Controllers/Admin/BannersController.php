@@ -86,6 +86,11 @@ class BannersController extends Controller
         if ($request->hasFile('image')) {
             $file          = $request->file('image');
             $extension     = $file->getClientOriginalExtension();
+            $path = public_path('uploads/banners');
+            if (!file_exists($path)) {
+                // Create the directory if it doesn't exist
+                mkdir($path, 0777, true);
+            }
             $filename      = 'banners\banner-image-' . time() . '.' . 'webp';
             // $file->move(uploadsDir('banners'), $filename);
             $convertedImage =  convertImage($file, $filename);

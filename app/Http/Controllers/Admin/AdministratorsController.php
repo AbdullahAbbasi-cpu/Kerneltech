@@ -61,6 +61,11 @@ class AdministratorsController extends Controller
         if ($request->hasFile('image')) {
             $file          = $request->file('image');
             $extension     = $file->getClientOriginalExtension();
+            $path = public_path('uploads/admin');
+            if (!file_exists($path)) {
+                // Create the directory if it doesn't exist
+                mkdir($path, 0777, true);
+            }
             $filename      = 'admin\admin-profile-' . time() . '.' . 'webp';
             $convertedImage = convertImage($file, $filename);
             $data['image'] = $convertedImage->basename;
@@ -117,7 +122,8 @@ class AdministratorsController extends Controller
     public function edit($id)
     {
         $data = Admin::find($id);
-        if (auth()->user()->is_system_admin == 1 || auth()
+        if (
+            auth()->user()->is_system_admin == 1 || auth()
             ->user()->id == $data->id || $data->is_system_admin == 0
         ) {
             return view('admin.administrators.edit', compact('data'));
@@ -138,7 +144,8 @@ class AdministratorsController extends Controller
     public function update(UpdateAdministratorRequest $request, $id)
     {
 
-        if (auth()->user()->is_system_admin == 1 || auth()
+        if (
+            auth()->user()->is_system_admin == 1 || auth()
             ->user()->id == $data->id || $data->is_system_admin == 0
         ) {
 

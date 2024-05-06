@@ -43,6 +43,11 @@ class SiteSettingsController extends Controller
         if ($request->hasfile('main_logo') || isset($records->previous_main_logo)) {
             $file      = $request->file('main_logo');
             $extension = $file->getClientOriginalExtension();
+            $path = public_path('uploads/site-settings');
+            if (!file_exists($path)) {
+                // Create the directory if it doesn't exist
+                mkdir($path, 0777, true);
+            }
             $filename  = 'site-settings\main-logo-' . time() . '.' . 'webp';
             // $file->move(uploadsDir('site-settings'), $filename);
             $convertedImage = convertImage($file, $filename);

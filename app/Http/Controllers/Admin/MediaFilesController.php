@@ -114,7 +114,13 @@ class MediaFilesController extends Controller
 
             //move | upload file on server
             $file      = $request->file('file');
-            $extension = $file->getClientOriginalExtension(); // getting image extension
+            $extension = $file->getClientOriginalExtension();
+            $path = public_path('uploads/front');
+            if (!file_exists($path)) {
+                // Create the directory if it doesn't exist
+                mkdir($path, 0777, true);
+            }
+            // getting image extension
             $filename  = 'front\media-file-' . time() . '.' . 'webp';
             $convertedImage = convertImage($file, $filename);
 
