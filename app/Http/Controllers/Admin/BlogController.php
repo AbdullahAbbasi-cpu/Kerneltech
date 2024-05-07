@@ -197,13 +197,13 @@ class BlogController extends Controller
         $data = Blog::find($id);
 
         if ($data) {
-            if ($data->feautured_image != '' && file_exists(uploadsDir('blogs') . $data->featured_image)) {
+            if ($data->featured_image != '' && file_exists(uploadsDir('blogs') . $data->featured_image)) {
                 if ($data->author_picture != '' && file_exists(uploadsDir('blogs') . $data->author_picture)) {
-                    unlink(uploadsDir('blogs') . $data->feautured_image);
+                    unlink(uploadsDir('blogs') . $data->featured_image);
                     unlink(uploadsDir('blogs') . $data->author_picture);
                 } else {
 
-                    unlink(uploadsDir('blogs') . $data->feautured_image);
+                    unlink(uploadsDir('blogs') . $data->featured_image);
                 }
             }
             Blog::where('id', $id)->delete();
