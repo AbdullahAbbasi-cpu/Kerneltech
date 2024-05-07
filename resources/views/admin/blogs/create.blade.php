@@ -215,7 +215,7 @@
                     description: {
                         required: true,
                     },
-                    f_image: {
+                    featured_image: {
                         required: true,
                         imageFileType: true
                     },
@@ -247,7 +247,10 @@
                     description: {
                         required: "Please enter your description",
                     },
-                    f_image: {
+                    author_description: {
+                        required: "Please enter your description",
+                    },
+                    featured_image: {
                         required: "Please select background image",
 
                     },
@@ -259,10 +262,7 @@
                         required: "Please enter author name",
 
                     },
-                    author_picture: {
-                        required: "Please enter author description",
 
-                    },
                     category: {
                         required: "Please select category",
 
