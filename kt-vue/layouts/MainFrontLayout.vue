@@ -82,14 +82,92 @@
       this.initScrollHandler();
       this.responsiveNavbar();
       this.navTrigger();
+      this.termsContent(currentURL);
+      this.privacyContent(currentURL);
+      this.aboutContent(currentURL);
       this.$router.afterEach((to) => {
           this.bannerData(to.path)
+          this.termsContent(to.path)
+          this.privacyContent(to.path)
+          this.aboutContent(to.path);
       });
     },
     components: {
       Modal,
     },
     methods: {
+      async termsContent(currentPath) 
+      {
+        if (currentPath == '/terms-and-condition') {
+          const response = await axios.post(`${process.env.API_BASE_URL}api/terms-data`, { pathname: currentPath });
+          const responseData = response.data;  
+          if (responseData.banner_title) {
+              $('.banner-heading').html(responseData.banner_title);
+          }
+          if (responseData.banner_description) {
+              $('.banner-description').html(responseData.banner_description);
+          }
+          if (responseData.image_path) {
+              $('.main-background-holder').attr('style', 'background-image: url("' + responseData.image_path + '") !important;');
+          }
+          if (responseData.content) {
+            $('.main-terms-content-holder').html(responseData.content);
+          }
+        } else {
+          console.log('not terms and condition page');
+        } 
+      },
+      async privacyContent(currentPath) 
+      {
+        if (currentPath == '/privacy-policy') {
+          const response = await axios.post(`${process.env.API_BASE_URL}api/privacy-data`, { pathname: currentPath });
+          const responseData = response.data;  
+          if (responseData.banner_title) {
+              $('.banner-heading').html(responseData.banner_title);
+          }
+          if (responseData.banner_description) {
+              $('.banner-description').html(responseData.banner_description);
+          }
+          if (responseData.image_path) {
+              $('.main-background-holder').attr('style', 'background-image: url("' + responseData.image_path + '") !important;');
+          }
+          if (responseData.content) {
+            $('.main-privacy-content-holder').html(responseData.content);
+          }
+        } else {
+          console.log('not terms and condition page');
+        } 
+      },
+      async aboutContent(currentPath) 
+      {
+        if (currentPath == '/about') {
+          const response = await axios.post(`${process.env.API_BASE_URL}api/about-data`, { pathname: currentPath });
+          const responseData = response.data;  
+          if (responseData.banner_title) {
+              $('.banner-heading').html(responseData.banner_title);
+          }
+          if (responseData.banner_description) {
+              $('.banner-description').html(responseData.banner_description);
+          }
+          if (responseData.image_path) {
+              $('.main-background-holder').attr('style', 'background-image: url("' + responseData.image_path + '") !important;');
+          }
+          if (responseData.about_image_1) {
+              $('.about-1').attr('src', responseData.about_image_1);
+          }
+          if (responseData.about_image_2) {
+              $('.about-2').attr('src', responseData.about_image_2);
+          }
+          if (responseData.about_content_1) {
+              $('.about-content-1').html(responseData.about_content_1);
+          }
+          if (responseData.about_content_2) {
+              $('.about-content-2').html(responseData.about_content_2);
+          }
+        } else {
+          console.log('not terms and condition page');
+        } 
+      },
       async bannerData(currentPath) {
         this.isLoading = true;
         try {

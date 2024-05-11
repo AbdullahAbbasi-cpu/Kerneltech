@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Jobs\SendInquiryConfirmationEmail;
 use Illuminate\Support\Facades\Toastr;
 use App\Http\Controllers\Api\Controller;
 use Illuminate\Http\Request;
 use App\Models\Inquiry;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\InquiryConfirmation;
+
 
 class InquiryController extends Controller
 {
@@ -44,7 +48,10 @@ class InquiryController extends Controller
 
         $data = $validator->validated();
         $inquiry = Inquiry::create($data);
-        
+
+        // Queue the email sending process
+        SendInquiryConfirmationEmail::dispatch($inquiry)->onQueue('emails');
+
         return response()->json(['message' => 'Your Request Registered Successfully'], 201);
     }
 

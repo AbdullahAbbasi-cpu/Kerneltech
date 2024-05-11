@@ -62,7 +62,7 @@
                                                     </td> --}}
                                                     <td style="min-width:7rem !important;">
                                                         <div
-                                                            class="custom-control custom-switch custom-switch-success mr-2 mb-1">
+                                                            class="custom-control custom-switch custom-switch-success mr-2">
                                                             <input type="checkbox" data-id="{{ $Blog->id }}"
                                                                 class="custom-control-input is_active"
                                                                 id="customSwitch_{{ $counter }}"
@@ -102,7 +102,7 @@
                                             @endforeach
                                         @else
                                             <tr>
-                                                <td colspan=6>
+                                                <td colspan=7>
                                                     <p class="text-center my-2">
                                                         No Data to Display
                                                     </p>

@@ -15,7 +15,7 @@
                         <div class="md:w-[42%] w-[100%]">
                            <input v-model="formData.email" type="email" id="footer-email"
                            class="footer-input w-100 py-[4px] bg-transparent border-second-border-color-var  text-f-16 font-normal leading-lh-19"
-                           placeholder="Enter your Email:" name="subscribeEmail">
+                           placeholder="Enter your Email:" name="email">
                         </div>
                         <button
                            class="bg-[#0097F4] md:ms-[-3px] md:w-[105px] sm:w-[200px] sm:mt-0 mt-3 text-white px-[18px] py-[9px] text-f-14 leading-lh-16 font-semibold">Subscribe</button>
@@ -25,16 +25,16 @@
                <div class="md:mt-0 mt-9 md:relative lg:w-auto md:w-[40%] lg:left-0 md:left-[86px]">
                   <h4 class="text-f-22 font-semibold leading-lh-26 text-second-color-var">Useful Links</h4>
                   <div class="flex flex-col lg:mt-[22px] mt-[14px]">
-                     <a href="./index.html"
-                        class="text-f-16 font-normal leading-lh-19 text-sixth-color-var hover:text-seventh-color-var">Home</a>
-                     <a href="javascript:void(0)"
-                        class="text-f-16 font-normal leading-lh-19 mt-[14px] text-sixth-color-var hover:text-seventh-color-var">Services</a>
-                     <a href="./blog.html"
-                        class="text-f-16 font-normal leading-lh-19 mt-[14px] text-sixth-color-var hover:text-seventh-color-var">Blog</a>
-                     <a href="./about-us.html"
-                        class="text-f-16 font-normal leading-lh-19 mt-[14px] text-sixth-color-var hover:text-seventh-color-var">About</a>
-                     <a href="./contact-us.html"
-                        class="text-f-16 font-normal leading-lh-19 mt-[14px] text-sixth-color-var hover:text-seventh-color-var">Contact</a>
+                     <NuxtLink to="/"
+                        class="text-f-16 font-normal leading-lh-19 text-sixth-color-var hover:text-seventh-color-var">Home</NuxtLink>
+                     <NuxtLink to="/web-application-design"
+                        class="text-f-16 font-normal leading-lh-19 mt-[14px] text-sixth-color-var hover:text-seventh-color-var">Services</NuxtLink>
+                     <NuxtLink to="/blog"
+                        class="text-f-16 font-normal leading-lh-19 mt-[14px] text-sixth-color-var hover:text-seventh-color-var">Blog</NuxtLink>
+                     <NuxtLink to="/about"
+                        class="text-f-16 font-normal leading-lh-19 mt-[14px] text-sixth-color-var hover:text-seventh-color-var">About</NuxtLink>
+                     <NuxtLink to="/contact"
+                        class="text-f-16 font-normal leading-lh-19 mt-[14px] text-sixth-color-var hover:text-seventh-color-var">Contact</NuxtLink>
                   </div>
                </div>
                <div class="lg:w-[35%] lg:ps-1 ps-0 lg:mt-0 md:mt-12 mt-9" id="contact-information">
@@ -92,20 +92,26 @@
                   <div class="md:mb-0 mb-2">
 
                      <!-- conditional statement for privacy policy -->
-                     <NuxtLink v-if="siteSettings.show_privacy_policy !== 0" to="/privacy-policy"
+                     <NuxtLink to="/privacy-policy"
+                        class="md:border-l-[1px] pl-[5px] md:border-l-[#AAA] h-[12px] pe-[3px] xl:text-f-16 md:text-f-14 text-f-14 font-normal leading-lh-19 md:text-left text-center text-sixth-color-var hover:text-seventh-color-var">Privacy
+                     Policy</NuxtLink>
+                     <!-- <NuxtLink v-if="siteSettings.show_privacy_policy !== 0" to="/privacy-policy"
                         class="md:border-l-[1px] pl-[5px] md:border-l-[#AAA] h-[12px] pe-[3px] xl:text-f-16 md:text-f-14 text-f-14 font-normal leading-lh-19 md:text-left text-center text-sixth-color-var hover:text-seventh-color-var">Privacy
                      Policy</NuxtLink>
                      <NuxtLink v-else to="/privacy-policy"
                         class="hidden md:border-l-[1px] pl-[5px] md:border-l-[#AAA] h-[12px] pe-[3px] xl:text-f-16 md:text-f-14 text-f-14 font-normal leading-lh-19 md:text-left text-center text-sixth-color-var hover:text-seventh-color-var">Privacy
-                     Policy</NuxtLink>
+                     Policy</NuxtLink> -->
 
                      <!-- conditional statement for terms and condition -->
-                     <NuxtLink v-if="siteSettings.show_terms_and_condition !== 0" to="/terms-and-condition"
+                     <NuxtLink to="/terms-and-condition"
+                        class="border-l-[1px] pl-[5px] border-l-[#AAA] h-[12px] xl:text-f-16 md:text-f-14 text-f-14 font-normal  leading-lh-19 md:text-left text-center text-sixth-color-var hover:text-seventh-color-var">Terms
+                     & Condition</NuxtLink>
+                     <!-- <NuxtLink v-if="siteSettings.show_terms_and_condition !== 0" to="/terms-and-condition"
                         class="border-l-[1px] pl-[5px] border-l-[#AAA] h-[12px] xl:text-f-16 md:text-f-14 text-f-14 font-normal  leading-lh-19 md:text-left text-center text-sixth-color-var hover:text-seventh-color-var">Terms
                      & Condition</NuxtLink>
                      <NuxtLink v-else to="/terms-and-condition"
                         class="hidden border-l-[1px] pl-[5px] border-l-[#AAA] h-[12px] xl:text-f-16 md:text-f-14 text-f-14 font-normal leading-lh-19 md:text-left text-center text-sixth-color-var hover:text-seventh-color-var">Terms
-                     & Condition</NuxtLink>
+                     & Condition</NuxtLink> -->
                   </div>
                </div>
                <div class="lg:w-[25%] md:w-[30%] flex md:flex-row flex-col items-center gap-2 justify-end mt-0 md:mb-0 mb-3">
@@ -166,17 +172,18 @@ export default {
    mounted() {
       this.siteSettingsData();
       this.$router.afterEach((to) => {
+         this.formData.email = '';
           this.siteSettingsData();
       });
      $('#subscribe_form').validate({
          rules: {
-             subscribeEmail: {
+             email: {
                  required: true,
                  email: true,
              },
          },
          messages: {
-             subscribeEmail: {
+             email: {
                  required: "Please enter your email address",
                  email: "Please enter a valid email address",
              },
@@ -198,7 +205,7 @@ export default {
          },
      });
    },
-   methods: {
+   methods: { 
       async siteSettingsData() {
          this.isloading = true;
         try {
@@ -222,6 +229,7 @@ export default {
       },
       async submitForm() {
          try {
+            console.log('inside the submit form try condition');
             const response = await axios.post(`${process.env.API_BASE_URL}api/subscribe-form`, this.formData);
             let successMessage = response.data.message + ' <i class="main-cross-icon fas fa-close"></i>';
             this.$toast.success(successMessage)

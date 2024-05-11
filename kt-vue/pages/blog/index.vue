@@ -134,6 +134,9 @@
 </template>
 <script>
   export default {
+    mounted() {
+      this.navTrigger();
+    },
     layout:'MainFrontLayout',
     data() {
       return {
@@ -159,6 +162,11 @@
       changePage(page) {
         this.currentPage = page;
       },
+      navTrigger() {
+        $(document).on('click', '.pagination-container button', function(){
+          $('html, body').animate({scrollTop: 540},);
+        })
+      }
     },
     async fetch() {
       this.posts = await this.$content("articles").fetch();

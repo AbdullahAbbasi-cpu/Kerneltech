@@ -22,7 +22,7 @@
     async asyncData({ store }) {
       const headerData = {
         title: 'Kernel Tech Invites You To Build Your Next Site',
-        description: 'With the help of our services, you will not have to visit any street, any area, any city, or any country; you can easily introduce your products and services just sitting on a relaxing chair.',
+        description: 'With the help of our services, you will not have to visit any street, any area, any city, or any country you can easily introduce your products and services just sitting on a relaxing chair.',
         bgImage: 'main-banner-image',
         customClass: 'is-homepage',
       };

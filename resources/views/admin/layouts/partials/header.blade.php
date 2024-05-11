@@ -94,7 +94,7 @@
 
             <!-- Achievement -->
 
-            <li class="nav-item {{ request()->segment(2) == 'achievements' ? 'active' : '' }}"><a href="#"><i
+            {{-- <li class="nav-item {{ request()->segment(2) == 'achievements' ? 'active' : '' }}"><a href="#"><i
                         class="feather icon-sliders"></i><span class="menu-title">Achievements</span>
                 </a>
                 <ul class="menu-content">
@@ -109,7 +109,7 @@
                                 class="menu-item" data-i18n="View">Manage Achievement</span></a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
 
             <!-- Media Files -->
 
@@ -126,7 +126,7 @@
 
             <!-- Banners -->
 
-            <li class="nav-item {{ request()->segment(2) == 'banners' ? 'active' : '' }}"><a href="#"><i
+            {{-- <li class="nav-item {{ request()->segment(2) == 'banners' ? 'active' : '' }}"><a href="#"><i
                         class="feather icon-airplay"></i><span class="menu-title">Banners</span>
                 </a>
                 <ul class="menu-content">
@@ -141,11 +141,11 @@
                                 class="menu-item" data-i18n="View">Manage Banners</span></a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
 
 
             <!-- Pages -->
-            <li class="nav-item {{ request()->segment(2) == 'pages' ? 'active' : '' }}">
+            {{-- <li class="nav-item {{ request()->segment(2) == 'pages' ? 'active' : '' }}">
                 <a href="#">
                     <i class="feather icon-book-open"></i>
                     <span class="menu-title">Pages</span>
@@ -165,6 +165,73 @@
                             <span class="menu-item" data-i18n="View">Manage Pages</span>
                         </a>
                     </li>
+                </ul>
+            </li> --}}
+
+            <li class="nav-item {{ request()->segment(2) == 'pages' ? 'active' : '' }}">
+                <a href="#">
+                    <i class="feather icon-book-open"></i>
+                    <span class="menu-title">Pages</span>
+                </a>
+                <ul class="menu-content">
+                    {{-- <li class="{{ (request()->segment(2) == 'pages' && request()->segment(3) == 'create') ? 'active' : '' }}">
+                        <a href="{{ route('admin.pages.create') }}">
+                            <i class="feather icon-circle"></i>
+                            <span class="menu-item" data-i18n="List">Add Page</span>
+                        </a>
+                    </li>
+                    <li class="{{ (request()->segment(2) == 'pages' && request()->segment(3) != 'create') ? 'active' : '' }}">
+                        <a href="{{ route('admin.pages.index') }}">
+                            <i class="feather icon-circle"></i>
+                            <span class="menu-item" data-i18n="View">Manage Pages</span>
+                        </a>
+                    </li> --}}
+                    {{-- <li class="nav-item {{ request()->segment(2) == 'home' ? 'active' : '' }}">
+                        <a href="{{ route('admin.site-settings.index') }}">
+                            <i class="feather icon-circle"></i>
+                            <span class="menu-item" data-i18n="View">Home</span>
+                        </a>
+                    </li>
+                    <li class="{{ (request()->segment(2) == 'pages' && request()->segment(3) != 'create') ? 'active' : '' }}">
+                        <a href="{{ route('admin.pages.index') }}">
+                            <i class="feather icon-circle"></i>
+                            <span class="menu-item" data-i18n="View">About</span>
+                        </a>
+                    </li>
+                    <li class="{{ (request()->segment(2) == 'pages' && request()->segment(3) != 'create') ? 'active' : '' }}">
+                        <a href="{{ route('admin.pages.index') }}">
+                            <i class="feather icon-circle"></i>
+                            <span class="menu-item" data-i18n="View">Contact</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ request()->segment(2) == 'privacy-policy' ? 'active' : '' }}">
+                        <a href="{{ route('admin.privacy-policy.index') }}">
+                            <i class="feather icon-circle"></i>
+                            <span class="menu-item" data-i18n="View">Privacy Policy</span>
+                        </a>
+                    </li> --}}
+                    <li class="nav-item {{ request()->segment(2) == 'content-pages' && request()->segment(3) == 'terms' ? 'active' : '' }}">
+                        <a href="{{ route('admin.content-pages.terms') }}">
+                            <i class="feather icon-circle"></i>
+                            <span class="menu-item" data-i18n="View">Terms and Conditions</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item {{ request()->segment(2) == 'content-pages' && request()->segment(3) == 'privacy' ? 'active' : '' }}">
+                        <a href="{{ route('admin.content-pages.privacy') }}">
+                            <i class="feather icon-circle"></i>
+                            <span class="menu-item" data-i18n="View">Privacy Policy</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item {{ request()->segment(2) == 'content-pages' && request()->segment(3) == 'about' ? 'active' : '' }}">
+                        <a href="{{ route('admin.content-pages.about') }}">
+                            <i class="feather icon-circle"></i>
+                            <span class="menu-item" data-i18n="View">About Page</span>
+                        </a>
+                    </li>
+
+
                 </ul>
             </li>
 
@@ -188,7 +255,7 @@
             </li>
 
             <!-- Working Process -->
-            <li class="nav-item {{ request()->segment(2) == 'working-process' ? 'active' : '' }}"><a
+            {{--<li class="nav-item {{ request()->segment(2) == 'working-process' ? 'active' : '' }}"><a
                     href="#"><i class="feather icon-edit"></i><span class="menu-title">Working Process</span>
                 </a>
                 <ul class="menu-content">
@@ -205,10 +272,10 @@
                                 Process</span></a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
 
             <!-- Industry -->
-            <li class="nav-item {{ request()->segment(2) == 'industries' ? 'active' : '' }}"><a href="#"><i
+            {{-- <li class="nav-item {{ request()->segment(2) == 'industries' ? 'active' : '' }}"><a href="#"><i
                         class="feather icon-sliders"></i><span class="menu-title">Industries</span>
                 </a>
                 <ul class="menu-content">
@@ -223,9 +290,11 @@
                                 class="menu-item" data-i18n="View">Manage Industry</span></a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
+
+
             <!-- Technology -->
-            <li class="nav-item {{ request()->segment(2) == 'technologies' ? 'active' : '' }}"><a href="#"><i
+            {{-- <li class="nav-item {{ request()->segment(2) == 'technologies' ? 'active' : '' }}"><a href="#"><i
                         class="feather icon-move"></i><span class="menu-title">Technologies</span>
                 </a>
                 <ul class="menu-content">
@@ -240,7 +309,9 @@
                                 class="menu-item" data-i18n="View">Manage Technology</span></a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
+
+            
             <!-- Blog -->
             <li class="nav-item {{ request()->segment(2) == 'blog' ? 'active' : '' }}"><a href="#"><i
                         class="feather icon-move"></i><span class="menu-title">Blogs</span>

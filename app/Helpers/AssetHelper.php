@@ -94,13 +94,18 @@ function filterUrl($key = '', $value = '')
     return $data;
 }
 
-function convertImage($file, $filename)
+function convertImage($file, $filename, $width = 500, $height = null, $quality = 75)
 {
     $image = Image::make($file);
-    $image->resize(800, null, function ($constraint) {
-        $constraint->aspectRatio();
-    });
-    $image->encode('webp', 75);
 
-    return $image->save(public_path('uploads/' . $filename));
+    if ($width && $height) {
+        $image->resize($width, $height);
+    } else {
+        $image->resize($width, $height, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+    }
+
+    $image->encode('webp', $quality);
+    return $image->save(public_path('uploads/' . $filename . '.webp'));
 }

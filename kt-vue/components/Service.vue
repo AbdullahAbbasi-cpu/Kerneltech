@@ -19,11 +19,11 @@
                 custom graphic design packages to help businesses in showcasing their identity. Let us create you
                 phenomenally.</p>
               <div class="flex justify-center items-center md:mt-[65px] mt-[20px] pb-[30px]">
-                <a href="javascript:void(0)">
+                <NuxtLink to="/web-application-design">
                   <button
                     class="duration-300 bg-third-color-var text-white px-[25px] hover:bg-white hover:text-seventh-color-var text-f-14 py-[13px] font-fw-500 leading-lh-normal rounded-second-radius-var">Read
                     More</button>
-                </a>
+                </NuxtLink>
               </div>
             </div>
           </div>
@@ -38,11 +38,11 @@
               <p class="md:text-f-18 text-f-16 font-fw-400 leading-lh-30 text-sixth-color-var pt-2">Being the top custom
                 web development company, we are passionate to creating websites that cater core business needs.</p>
               <div class="flex justify-center items-center md:mt-[43px] mt-[20px] pb-[30px]">
-                <a href="javascript:void(0)">
+                <NuxtLink to="/custom-web-development-services">
                   <button
                     class="duration-300 bg-third-color-var text-white px-[25px] text-f-14 py-[13px] hover:bg-white hover:text-seventh-color-var font-fw-500 leading-lh-normal rounded-second-radius-var">Read
                     More</button>
-                </a>
+                </NuxtLink>
               </div>
             </div>
           </div>
@@ -58,11 +58,11 @@
                 Digital-First Worldview that fosters impression and enhances online reputation for the better brand
                 awareness.</p>
               <div class="flex justify-center items-center md:mt-[45px] mt-[20px] pb-[45px]">
-                <a href="javascript:void(0)">
+                <NuxtLink to="/digital-marketing">
                   <button
                     class="duration-300 bg-third-color-var text-white px-[25px] text-f-14 py-[13px] hover:bg-white hover:text-seventh-color-var font-fw-500 leading-lh-normal rounded-second-radius-var">Read
                     More</button>
-                </a>
+                </NuxtLink>
               </div>
             </div>
           </div>
@@ -77,11 +77,11 @@
               <p class="md:text-f-18 text-f-16 font-fw-400 leading-lh-30 text-sixth-color-var pt-4">Being the top custom
                 web development company, we are passionate to creating websites that cater core business needs.</p>
               <div class="flex justify-center items-center md:mt-[40px] mt-[20px] pb-[45px]">
-                <a href="javascript:void(0)">
+                <NuxtLink to="/android-development">
                   <button
                     class="duration-300 bg-third-color-var text-white px-[25px] text-f-14 py-[13px] hover:bg-white hover:text-seventh-color-var font-fw-500 leading-lh-normal rounded-second-radius-var">Read
                     More</button>
-                </a>
+                </NuxtLink>
               </div>
             </div>
           </div>
@@ -97,11 +97,11 @@
                 Digital-First Worldview that fosters impression and enhances online reputation for the better brand
                 awareness.</p>
               <div class="flex justify-center items-center md:mt-[45px] mt-[20px] pb-[45px]">
-                <a href="javascript:void(0)">
+                <NuxtLink to="/digital-marketing">
                   <button
                     class="duration-300 bg-third-color-var text-white px-[25px] text-f-14 py-[13px] hover:bg-white hover:text-seventh-color-var font-fw-500 leading-lh-normal rounded-second-radius-var">Read
                     More</button>
-                </a>
+                </NuxtLink>
               </div>
             </div>
           </div>

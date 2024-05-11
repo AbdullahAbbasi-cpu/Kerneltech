@@ -34,6 +34,9 @@ Route::group(['middleware' => 'cors'], function () {
     Route::post('subscribe-form', 'SubscribeController@store');
 	Route::post('free-quote-form', 'FreeQuoteController@store');
 	Route::post('banner-data', 'bannerController@store');
+	Route::post('terms-data', 'ContentPageController@termsData');
+	Route::post('privacy-data', 'ContentPageController@privacyData');
+	Route::post('about-data', 'ContentPageController@aboutData');
 	Route::post('testimonial-data', 'TestimonialController@store');
 	Route::post('site-settings-data', 'SiteSettingsController@store');
 });

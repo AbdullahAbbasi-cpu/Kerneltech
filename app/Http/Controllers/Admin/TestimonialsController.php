@@ -60,7 +60,7 @@ class TestimonialsController extends Controller
                 mkdir($path, 0777, true);
             }
             $filename      = 'testimonials\testimonial-img-' . time() . '.' . 'webp';
-            $convertedImage = convertImage($file, $filename);
+            $convertedImage = convertImage($file, $filename, 70, 70, 75);
             $data['image'] = $convertedImage->basename;
             $imageFileName = $convertedImage->basename;
         }
@@ -109,7 +109,7 @@ class TestimonialsController extends Controller
                 mkdir($path, 0777, true);
             }
             $filename      = 'testimonials\testimonial-img-' . time() . '.' . 'webp';
-            $convertedImage = convertImage($file, $filename);
+            $convertedImage = convertImage($file, $filename, 70, 70, 75);
             $data['image'] = $convertedImage->basename;
             $imageFileName = $convertedImage->basename;
         }

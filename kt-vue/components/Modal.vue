@@ -20,7 +20,10 @@
                       <p class="text-second-color-var text-center text-f-17">We make all your dreams come true in a successful
                         project.
                       </p>
-                      <div class="pt-4">
+                      <div class="pt-4 relative">
+                        <div class="inquiry-loader hidden">
+                          <img src="~assets/images/blue-loading-icon.gif" alt=""/>
+                        </div>
                         <form action="#" id="popup_form">
                             <input v-model="formData.name" class="modal-input rounded w-full py-3 px-3 text-fouth-color-var leading-tight text-[15px]" id="name"
                               type="text" placeholder="Name" name="popupName">
@@ -52,6 +55,7 @@
     </div>
 </template>
 <script>
+  import Swal from 'sweetalert2';
   import axios from 'axios';
   export default {
     mounted() {
@@ -66,11 +70,12 @@
                 required: true,
                 email: true,
             },
-            // popupPhone: {
-            //   required: true,
-            //   minlength:11,
-            //   maxlength:11
-            // },
+            popupPhone: {
+                required: true,
+                minlength: 11,
+                maxlength: 11,
+                digits: true,
+            },
         },
         messages: {
             popupName: {
@@ -80,12 +85,10 @@
                 required: "Please enter your email address",
                 email: "Please enter a valid email address",
             },
-            // popupPhone: {
-            //   required: "Please enter your phone number",
-            // },
-            message: {
-                required: "Please enter your message",
+            popupPhone: {
+              required: "Please enter your phone number correctly.",
             },
+
         },
         errorElement: 'span',
         errorClass: 'error-message',
@@ -101,6 +104,8 @@
         },
         submitHandler: function () {
             console.log('Form Submitted');
+            $('.inquiry-loader').removeClass('hidden');
+            $('.modal-close').css('pointer-events', 'none');
             self.submitToServer();
         },
       });
@@ -117,7 +122,15 @@
           const response = await axios.post(`${process.env.API_BASE_URL}api/inquiry-form`, this.formData);
           console.log(response.data.message);
           let successMessage = response.data.message + ' <i class="main-cross-icon fas fa-close"></i>';
-          this.$toast.success(successMessage)
+          $('.modal-close').trigger('click');
+          $('.inquiry-loader').addClass('hidden');
+          $('.modal-close').css('pointer-events', 'all');
+          // this.$toast.success(successMessage)
+          Swal.fire({
+            icon: "success",
+            text: "Thank you for submitting the form! Our sales team will contact you within 48 hours",
+            confirmButtonColor: '#0094f4'
+          });
           this.formData = {
             name: '',
             email: '',
@@ -130,6 +143,10 @@
           let nameMessage = error.response.data.error.name ? error.response.data.error.name + ' <i class="main-cross-icon fas fa-close"></i>' : null;
           let phoneMessage = error.response.data.error.phone ? error.response.data.error.phone + ' <i class="main-cross-icon fas fa-close"></i>': null;
           
+          $('.inquiry-loader').addClass('hidden');
+          $('.modal-close').css('pointer-events', 'all');
+
+
           if (emailMessage) {
               this.$toast.error(emailMessage);
           }
@@ -146,6 +163,13 @@
         this.isActive = true;
       },
       closeModal() {
+        this.formData.name = '';
+        this.formData.email = '';
+        this.formData.phone = '';
+        this.formData.message = '';
+        $('#email-error').css('display', 'none');
+        $('#name-error').css('display', 'none');
+        $('#phone-error').css('display', 'none');
         this.isActive = false;
       },
       handleClickInside(event) {
@@ -153,7 +177,7 @@
       },
       submitForm() {
         // Handle form submission logic here
-      }
+      },
     },
     data() {
       return {
@@ -169,5 +193,13 @@
   };
 </script>
 <style scoped>
-  .modal,.modal.is-active{display:flex;transition:opacity .5s}.modal{pointer-events:none;opacity:0;position:absolute;left:-999999rem}.modal-overlay,.modal.is-active{left:0;top:0;width:100%;height:100%}.modal.is-active{align-items:center;justify-content:center;position:fixed;opacity:1;pointer-events:all!important}.modal-overlay{position:absolute;background-color:rgba(0,0,0,.5)}.modal-wrapper{position:relative}.modal-content{background-color:#fff;border-radius:5px;padding-right:0!important;padding-left:0!important}.modal-close{position:absolute;right:16px;top:16px;cursor:pointer;border:none;font-size:24px;color:#333}
+  .modal,.modal.is-active{display:flex;transition:opacity .5s}.modal{pointer-events:none;opacity:0;position:absolute;left:-999999rem}.modal-overlay,.modal.is-active{left:0;top:0;width:100%;height:100%}.modal.is-active{align-items:center;justify-content:center;position:fixed;opacity:1;pointer-events:all!important}.modal-overlay{position:absolute;background-color:rgba(0,0,0,.5)}.modal-wrapper{position:relative}.modal-content{background-color:#fff;border-radius:5px;padding-right:0!important;padding-left:0!important}.modal-close{position:absolute;right:16px;top:16px;cursor:pointer !important;border:none;font-size:24px;color:#333}
+
+  .inquiry-loader {
+    position:absolute !important;
+    width:100% !important;
+    height:100% !important;
+    margin-top:-8px !important;
+    background: #0000007d !important;
+  }
 </style>

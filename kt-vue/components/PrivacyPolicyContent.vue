@@ -1,7 +1,7 @@
 <template>
     <section class="pt-[55px] pb-[80px]">
     <div class="first-container-var">
-      <div class="row xl:px-0 px-3">
+      <div class="row xl:px-0 px-3 main-privacy-content-holder">
         <p class="sm:text-f-20 text-f-16 font-fw-400 sm:leading-[38px] leading-lh-28  text-sixth-color-var">With constant
           evolution in the development of Web technology, we can finally say that the future of the Web is here.
           However, if we go

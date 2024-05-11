@@ -312,8 +312,8 @@ body.fixed-footer footer.footer-dark {
           position: relative;
           top: 1px; }
         .main-menu.menu-light .navigation > li.open > a, .main-menu.menu-light .navigation > li.sidebar-group-active > a {
-          color: #494949;
-          background: whitesmoke;
+          /* color: #494949; */
+          /* background: whitesmoke; */
           transition: transform 0.25s ease 0s, -webkit-transform 0.25s ease 0s;
           border-radius: 6px;
           margin-bottom: 7px; }

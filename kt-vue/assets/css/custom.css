@@ -1436,3 +1436,50 @@ nav .active\:font-fw-500:active {
 		max-width:142px !important;
 		max-height:41px !important;
 	}
+
+	.main-terms-content-holder h1,
+	.main-terms-content-holder h2,
+	.main-terms-content-holder h3,
+	.main-terms-content-holder h4,
+	.main-terms-content-holder h5,
+	.main-terms-content-holder h6,
+	.main-privacy-content-holder h1,
+	.main-privacy-content-holder h2,
+	.main-privacy-content-holder h3,
+	.main-privacy-content-holder h4,
+	.main-privacy-content-holder h5,
+	.main-privacy-content-holder h6  {
+		font-size:25px !important;
+		margin-top:1.75rem !important;
+		margin-bottom:20px !important;
+	}
+	.main-terms-content-holder p,
+	.main-privacy-content-holder p  {
+		font-size:20px !important;
+		line-height:38px !important;
+	}
+
+	.about-1,.about-2 {
+		min-height:400px !important;
+	}
+	.about-content-1 h1,
+	.about-content-1 h2,
+	.about-content-1 h3,
+	.about-content-1 h4,
+	.about-content-1 h5,
+	.about-content-1 h6,
+	.about-content-2 h1,
+	.about-content-2 h2,
+	.about-content-2 h3,
+	.about-content-2 h4,
+	.about-content-2 h5,
+	.about-content-2 h6 {
+		font-size:35px !important;
+		line-height:42px !important;
+		margin-bottom:20px !important;
+	}
+	.about-content-1 p,.about-content-2 p {
+		font-size: 18px !important;
+		line-height: 28px !important;
+		margin-bottom: 10px !important;
+	}

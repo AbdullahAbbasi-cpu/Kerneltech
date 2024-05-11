@@ -26,7 +26,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group mb-1">
-                                                <label for="image">Author Pcture</label>
+                                                <label for="image">Author Picture</label>
                                                 <input type="file" name="author_picture" class="form-control p-6">
                                             </div>
                                         </div>

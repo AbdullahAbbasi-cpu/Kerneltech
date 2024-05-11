@@ -41,7 +41,7 @@ class SubscribeController extends Controller
         // $data = $request->only(['email']);
         $data = $validator->validated();
         $Subscribe = Subscribe::create($data);
-        return response()->json(['message' => 'Your Email Request Registered Successfully'], 201);
+        return response()->json(['message' => 'Thank you for Subscribing to our Newsletter'], 201);
     }
 
     /**

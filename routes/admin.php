@@ -86,5 +86,15 @@ Route::name('admin.')->group(
         Route::resource('our-people', 'OurPeopleController');
         Route::post('media/reorder', 'MediaController@reorder')->name('media.reorder');
         Route::post('news/front', 'NewsController@frontPage')->name('news.front');
+
+         // content pages route
+         Route::get('/content-pages/terms', 'ContentPageController@terms')->name('content-pages.terms');
+         Route::put('/content-pages/termsUpdate', 'ContentPageController@termsUpdate')->name('content-pages.termsUpdate');
+ 
+         Route::get('/content-pages/privacy', 'ContentPageController@privacy')->name('content-pages.privacy');
+         Route::put('/content-pages/privacyUpdate', 'ContentPageController@privacyUpdate')->name('content-pages.privacyUpdate');
+ 
+         Route::get('/content-pages/about', 'ContentPageController@about')->name('content-pages.about');
+         Route::put('/content-pages/aboutUpdate', 'ContentPageController@aboutUpdate')->name('content-pages.aboutUpdate');
     }
 );

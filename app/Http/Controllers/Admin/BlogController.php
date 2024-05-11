@@ -61,9 +61,9 @@ class BlogController extends Controller
                 // Create the directory if it doesn't exist
                 mkdir($path, 0777, true);
             }
-            $filename      = 'blogs\blog-image-' . time() . '.' . 'webp';
+            $filename      = 'blogs\blog-image-' . time();
             //converted image to webp with compress sizing
-            $convertedImage = convertImage($file, $filename);
+            $convertedImage = convertImage($file, $filename, 880, 450, 75);
             // $file->move(uploadsDir('blogs'), $filename);
 
             $data['featured_image'] = $convertedImage->basename;
@@ -78,10 +78,10 @@ class BlogController extends Controller
                 // Create the directory if it doesn't exist
                 mkdir($path, 0777, true);
             }
-            $filename      = 'blogs\blog-image-' . time() + 1 . '.' . 'webp';
+            $filename      = 'blogs\blog-image-' . time() + 1;
             // $file->move(uploadsDir('blogs'), $filename);
             //converted image to webp with compress sizing
-            $convertedImage = convertImage($file, $filename);
+            $convertedImage = convertImage($file, $filename, 80, 80, 75);
             $data['author_picture'] = $convertedImage->basename;
             $AuthorImageFileName = $convertedImage->basename;
         }
@@ -140,10 +140,10 @@ class BlogController extends Controller
                 // Create the directory if it doesn't exist
                 mkdir($path, 0777, true);
             }
-            $filename      = 'blogs\blog-image-' . time() . '.' . 'webp';
+            $filename      = 'blogs\blog-image-' . time();
             // $file->move(uploadsDir('blogs'), $filename);
             //converted image to webp and compress
-            $convertedImage = convertImage($file, $filename);
+            $convertedImage = convertImage($file, $filename, 880, 450, 75);
             $data['featured_image'] = $convertedImage->basename;
             $FeauturedImageFileName = $convertedImage->basename;
         }
@@ -151,10 +151,10 @@ class BlogController extends Controller
         if ($request->hasFile('author_picture')) {
             $file          = $request->file('author_picture');
             $extension     = $file->getClientOriginalExtension();
-            $filename      = 'blogs\blog-image-' . time() + 1 . '.' . 'webp';
+            $filename      = 'blogs\blog-image-' . time() + 1;
             // $file->move(uploadsDir('blogs'), $filename);
             //converted image to webp and compress
-            $convertedImage = convertImage($file, $filename);
+            $convertedImage = convertImage($file, $filename, 80, 80, 75);
             $data['author_picture'] = $convertedImage->basename;
             $AuthorImageFileName = $convertedImage->basename;
         }

@@ -1,7 +1,7 @@
 <template>
     <section class="pt-[45px] pb-[80px]">
      <div class="first-container-var">
-       <div class="row xl:px-0 px-3">
+       <div class="row xl:px-0 px-3 main-terms-content-holder">
          <p class="sm:text-f-20 text-f-16 font-fw-400 sm:leading-[38px] leading-lh-28  text-sixth-color-var">Access to and use of this site (www.kerneltech.net) is provided by KernelTech. subject to the following terms:</p>
          <p class="sm:text-f-20 text-f-16 font-fw-400 sm:leading-[38px] leading-lh-28 mt-4  text-sixth-color-var ">By using this site you agree to be legally bound by these terms, which shall take effect immediately on your first use of the site. If you do not agree to be legally bound by all the following terms please do not access and/or use this site.</p>
          <p class="sm:text-f-20 text-f-16 font-fw-400 sm:leading-[38px] leading-lh-28 mt-4  text-sixth-color-var"> KernelTech may change these terms at any time by posting changes online. Please review these terms regularly to ensure you are aware of any changes made. Your continued use of this site after changes are posted means you agree to be legally bound by these terms as updated and/or amended.</p>

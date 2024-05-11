@@ -49,6 +49,7 @@ export default {
     { src: "~/plugins/jquery", mode: "client" },
     { src: "~/plugins/jquery.flip.min.js", mode: "client" },
     { src: '~/plugins/jquery-validation.js', ssr: false },
+    { src: '~/plugins/clearEmailField.js'},
   ],
   layouts: {
     // Default layout is applied to all pages

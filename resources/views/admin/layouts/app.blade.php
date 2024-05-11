@@ -148,10 +148,14 @@
     <script>
 
         // for multiselect dropdwon
-        new MultiSelectTag('working-process')
-        new MultiSelectTag('industry')
-        new MultiSelectTag('technology')
-        new MultiSelectTag('testimonials')
+        // new MultiSelectTag('working-process')
+        new MultiSelectTag('industries_to_show')
+        new MultiSelectTag('technologies_to_show')
+        new MultiSelectTag('st_testimonials_to_show')
+        new MultiSelectTag('ht_testimonials_to_show')
+        new MultiSelectTag('achievements_to_show')
+        new MultiSelectTag('services_to_show')
+        
 
         function logout() {
             document.getElementById("logout-form").submit();

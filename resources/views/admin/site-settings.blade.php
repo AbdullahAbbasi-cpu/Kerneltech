@@ -144,7 +144,7 @@
                                     </div> -->
                                     
 
-                                    <div class="col-sm-6 mt-2">
+                                    {{-- <div class="col-sm-6 mt-2">
                                         <div class="form-group">
                                             <div class="custom-control custom-switch custom-switch-success mr-2">
                                                 <span class="mr-2">Show Privacy Policy</span>
@@ -155,11 +155,11 @@
                                         <div id="privacyPolicyTextArea" class=" mt-2" style="display: none;">
                                             <textarea class="form-control editor" id="privacypolicyeditor" name="privacy_policy_content" rows="5">{{ $records->privacy_policy_content }}</textarea>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
 
 
-                                    <div class="col-sm-6 mt-2">
+                                    {{-- <div class="col-sm-6 mt-2">
                                         <div class="form-group">
                                             <div class="custom-control custom-switch custom-switch-success mr-2">
                                                 <span class="mr-2">Show Terms & Condition</span>
@@ -170,7 +170,7 @@
                                         <div id="termsConditionsTextArea" class=" mt-2" style="display: none;">
                                             <textarea class="form-control editor" id="termsAndConditionEditor" name="terms_and_condition_content" rows="5">{{ $records->terms_and_condition_content }}</textarea>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </fieldset>
                             {{-- <fieldset>
