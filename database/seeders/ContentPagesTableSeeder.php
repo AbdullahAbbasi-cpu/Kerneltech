@@ -24,6 +24,8 @@ class ContentPagesTableSeeder extends Seeder
 
         \DB::table('content_pages')->insert([
             'page_identifier' => 'terms-and-condition',
+            'meta_title' => 'Terms & Condition',
+            'meta_description' => 'Review our guidelines for product utilization and service provision to establish a transparent and equitable connection between users and our platform.',
             'banner_image' => 'terms-and-condition-banner.png',
             'banner_title' => 'Terms & Condition',
             'banner_description' => '<p>We started our journey in 2012. And looking back it has been an awesome ride with lots of ups and downs. But whatever be the situation, we were always trying to move forward.</p><p>Icing croissant croissant jelly gummi bears cotton candy jujubes apple pie caramels. Dragée soufflé bonbon powder. Sesame snaps sugar plum chupa chups tart wafer caramels toffee.</p>',
@@ -36,6 +38,8 @@ class ContentPagesTableSeeder extends Seeder
 
         \DB::table('content_pages')->insert([
             'page_identifier' => 'privacy-policy',
+            'meta_title' => 'Privacy Policy',
+            'meta_description' => 'Explore our approach to safeguarding your data and preserving your privacy rights by outlining our practices for data collection, utilization, and protection.',
             'banner_image' => 'privacy-policy-banner.png',
             'banner_title' => 'Privacy Policy',
             'banner_description' => '<p>We started our journey in 2012. And looking back it has been an awesome ride with lots of ups and downs. But whatever be the situation, we were always trying to move forward.</p><p>Icing croissant croissant jelly gummi bears cotton candy jujubes apple pie caramels. Dragée soufflé bonbon powder. Sesame snaps sugar plum chupa chups tart wafer caramels toffee.</p>',
@@ -48,6 +52,8 @@ class ContentPagesTableSeeder extends Seeder
 
         \DB::table('content_pages')->insert([
             'page_identifier' => 'about',
+            'meta_title' => 'About',
+            'meta_description' => 'Discover our mission, core values, and evolution as we endeavor to provide exceptional and impactful experiences to our community.',
             'banner_image' => 'about-banner.png',
             'banner_title' => 'About Us',
             'banner_description' => '<p>We started our journey in 2012. And looking back it has been an awesome ride with lots of ups and downs. But whatever be the situation, we were always trying to move forward.</p><p>Icing croissant croissant jelly gummi bears cotton candy jujubes apple pie caramels. Dragée soufflé bonbon powder. Sesame snaps sugar plum chupa chups tart wafer caramels toffee.</p>',

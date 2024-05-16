@@ -37,6 +37,8 @@ Route::group(['middleware' => 'cors'], function () {
 	Route::post('terms-data', 'ContentPageController@termsData');
 	Route::post('privacy-data', 'ContentPageController@privacyData');
 	Route::post('about-data', 'ContentPageController@aboutData');
+	Route::post('blog-data', 'blogController@markDownCreation');
+	Route::post('all-categories', 'blogController@allCategories');
 	Route::post('testimonial-data', 'TestimonialController@store');
 	Route::post('site-settings-data', 'SiteSettingsController@store');
 });

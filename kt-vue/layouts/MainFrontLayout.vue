@@ -59,6 +59,7 @@
   import Navbar from "@/components/Navbar";
   import Modal from "@/components/Modal";
   import Footer from "@/components/Footer";
+  import { fetchAllArticles } from '@/services/apiService';
     export default {
       props: {
         uniqueParameter: {
@@ -85,17 +86,26 @@
       this.termsContent(currentURL);
       this.privacyContent(currentURL);
       this.aboutContent(currentURL);
+      this.blogContent(currentURL);
       this.$router.afterEach((to) => {
           this.bannerData(to.path)
           this.termsContent(to.path)
           this.privacyContent(to.path)
           this.aboutContent(to.path);
+          this.blogContent(to.path);
       });
     },
     components: {
       Modal,
     },
     methods: {
+      async blogContent(currentPath) 
+      {
+        if (currentPath == '/blog') {
+          const allArticles = await fetchAllArticles();
+          return { allArticles };
+        }
+      },
       async termsContent(currentPath) 
       {
         if (currentPath == '/terms-and-condition') {
@@ -166,6 +176,27 @@
           }
         } else {
           console.log('not terms and condition page');
+        } 
+      },
+      async blogContent(currentPath) 
+      {
+        if (currentPath == '/blog') {
+          const response = await axios.post(`${process.env.API_BASE_URL}api/blog-data`, { pathname: currentPath });
+          const responseData = response.data;  
+          if (responseData.banner_title) {
+              $('.banner-heading').html(responseData.banner_title);
+          }
+          if (responseData.banner_description) {
+              $('.banner-description').html(responseData.banner_description);
+          }
+          if (responseData.image_path) {
+              $('.main-background-holder').attr('style', 'background-image: url("' + responseData.image_path + '") !important;');
+          }
+          if (responseData.content) {
+            $('.main-privacy-content-holder').html(responseData.content);
+          }
+        } else {
+          // alert('you are not inside blog page');
         } 
       },
       async bannerData(currentPath) {

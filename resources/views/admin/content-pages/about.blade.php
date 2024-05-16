@@ -39,6 +39,29 @@
                                         </div>
                                     </div>
                                 </div>
+
+
+                                <!-- meta title -->
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="meta_title">Meta Title</label>
+                                            <input type="text" required name="meta_title" maxlength="190" value="{{ old('meta_title', $record->meta_title) }}" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- meta description -->
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="contact_email">Meta Description</label>
+                                            <textarea class="form-control ckeditor-textarea" name="meta_description" rows="5" required>{{ $record->meta_description }}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
                             </fieldset>
                             <fieldset>
                                 <div class="row">

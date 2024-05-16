@@ -16,21 +16,21 @@
                   <article v-for="post of paginatedPosts" :key="post.slug" class="sm:p-4" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <div class="bg-first-color-var shadow-second-boxshadow-var mt-6">
                       <nuxt-link :to="`/blog/${post.slug}`">
-                          <img :src="getImageSource(post.img)" class="sm:min-h-[448px] sm:max-h-[448px] blog-featured-image" alt="">
+                          <img :src="post.img" class="sm:min-h-[448px] sm:max-h-[448px] blog-featured-image" alt="">
                           <div class="sm:px-[30px] px-[16px] pt-[17px]">
                             <div class="flex items-center mt-[12px] sm:gap-12 gap-8">
                                 <div class="flex items-center gap-2">
                                   <img src="~/assets/images/profile-icon.svg" alt="">
-                                  <p class="sm:text-f-18 text-f-14 font-fw-500 leading-lh-21 text-[#adadad] mb-0">
+                                  <p class="capitalize sm:text-f-18 text-f-14 font-fw-500 leading-lh-21 text-[#adadad] mb-0">
                                     {{ post.author.name }}
                                   </p>
                                 </div>
                                 <div class="flex items-center gap-2">
                                   <img src="~/assets/images/calendar.svg" alt="">
-                                  <p class="sm:text-f-18 text-f-14 font-fw-500 leading-lh-21 text-[#adadad] mb-0">{{ post.published_date }}</p>
+                                  <p class="capitalize sm:text-f-18 text-f-14 font-fw-500 leading-lh-21 text-[#adadad] mb-0">{{ post.published_date }}</p>
                                 </div>
                             </div>
-                            <h4 class="sm:text-f-24 text-f-20 font-fw-700 leading-lh-28 pt-4 text-second-color-var">
+                            <h4 class="capitalize sm:text-f-24 text-f-20 font-fw-700 leading-lh-28 pt-4 text-second-color-var">
                               <nuxt-link :to="`/blog/${post.slug}`">
                                 {{ post.title }}
                               </nuxt-link>
@@ -38,9 +38,7 @@
                           </div>
                       </nuxt-link>
                       <div class="sm:px-[30px] px-[16px] pb-[30px]">
-                          <p class="max-w-[661px] sm:text-f-18 text-f-14 font-fw-400 sm:leading-lh-30 leading-lh-26 mt-[5px]">
-                            {{ post.description }}
-                          </p>
+                          <p class="max-w-[661px] sm:text-f-18 text-f-14 font-fw-400 sm:leading-lh-30 leading-lh-26 mt-[5px]" v-html="truncateDescription(post.description)"></p>
                           <nuxt-link :to="`/blog/${post.slug}`">
                             <button class="blog-read-more text-f-16 bg-second-bg-color-var text-first-color-var py-[13px] px-[25px] rounded-second-radius-var mt-6 mb-2 hover:bg-transparent hover:border-[#0094F4] hover:text-third-color-var border-0 font-fw-500 leading-lh-19 transition-all duration-300">
                               Read More
@@ -136,7 +134,13 @@
     </section>
   </template>
   <script>
+    import { fetchAllCategories } from '@/services/fetchAllCategories';
     export default {
+      mounted() {
+        let currentURL = window.location.pathname;
+        this.navTrigger();
+        this.allCategories(currentURL);
+      },
       layout:'MainFrontLayout',
       data() {
         return {
@@ -146,11 +150,70 @@
         };
       },  
       methods: {
-        getImageSource(imageName) {
-          return require(`~/assets/images/${imageName}.png`);
+        truncateDescription(description) {
+          const maxLength = 150;
+          if (description.length > maxLength) {
+            return description.slice(0, maxLength) + '...';
+          } else {
+            return description;
+          }
         },
         changePage(page) {
           this.currentPage = page;
+        },
+        navTrigger() {
+          $(document).on('click', '.pagination-container button', function () {
+            $('html, body').animate({ scrollTop: 540 });
+          })
+        },
+        async allCategories(currentPath) {
+          if (currentPath.includes('blog/category/')) {
+            fetchAllCategories()
+            .then(categoriesHolder => {
+              const uniqueCategories = new Set(); // Set to store unique categories
+              // Extract unique categories from categoriesHolder
+              categoriesHolder.forEach(category => {
+                const lowerCaseCategory = category.toLowerCase(); // Convert category to lowercase
+                uniqueCategories.add(lowerCaseCategory);
+              });
+              
+              if (uniqueCategories.size > 0) {
+                const categoryList = $('#default-tab');
+                  categoryList.empty(); // Clear existing categories
+
+                  uniqueCategories.forEach(category => {
+                    // Generate slug from category name
+                    const slug = category.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+
+                    const listItem = $('<li>').attr('role', 'presentation');
+
+                    const link = $('<a>').attr('href', `/blog/category/${slug}`);
+
+                    const button = $('<button>')
+                      .addClass('capitalize inline-block py-[8px] border-b-2 border-fouth-border-color-var w-full text-start text-f-16 font-fw-400 leading-lh-19 text-sixth-color-var focus:text-sixth-color-var')
+                      .attr({
+                        'id': `${slug}-tab`,
+                        'data-tabs-target': `#${slug}`,
+                        'type': 'button',
+                        'role': 'tab',
+                        'aria-controls': slug,
+                        'aria-selected': 'false'
+                      })
+                      .text(category);
+
+                    link.append(button);
+                    listItem.append(link);
+                    categoryList.append(listItem);
+                  });
+                } else {
+                  // If no categories fetched, keep the static categories as they are
+                  alert('No categories found');
+                }
+              })
+              .catch(error => {
+                console.error('Error fetching categories:', error);
+              });
+          }
         },
       },
       async fetch() {

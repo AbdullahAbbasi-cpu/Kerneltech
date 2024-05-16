@@ -25,6 +25,7 @@ class ContentPageController extends Controller {
         return view('admin.content-pages.terms', compact('record'));
     }
     public function termsUpdate(Request $request) {
+        // dd($request->all());
         $data = $request->except([
             '_token',
             '_method',
@@ -60,7 +61,9 @@ class ContentPageController extends Controller {
             $updatedContent = [
                 'banner_title' => $request->banner_title,
                 'content' => $request->content,
-                'banner_description' => $request->banner_description       
+                'banner_description' => $request->banner_description,
+                'meta_title' => $request->meta_title,
+                'meta_description' => $request->meta_description,     
             ];
             if ($imageFileName !== '') {
                 $updatedContent['banner_image'] = $imageFileName;
@@ -115,7 +118,9 @@ class ContentPageController extends Controller {
             $updatedContent = [
                 'banner_title' => $request->banner_title,
                 'content' => $request->content,
-                'banner_description' => $request->banner_description       
+                'banner_description' => $request->banner_description,
+                'meta_title' => $request->meta_title,
+                'meta_description' => $request->meta_description,       
             ];
 
             if ($imageFileName !== '') {
@@ -181,7 +186,9 @@ class ContentPageController extends Controller {
                 'banner_title' => $request->banner_title,
                 'banner_description' => $request->banner_description,       
                 'about_content_1' => $request->about_content_1,
-                'about_content_2' => $request->about_content_2       
+                'about_content_2' => $request->about_content_2,
+                'meta_title' => $request->meta_title,
+                'meta_description' => $request->meta_description,  
             ];
             foreach ($imageFileNames as $fileType => $filename) {
                 if (isset($contentPage->{$fileType})) {
